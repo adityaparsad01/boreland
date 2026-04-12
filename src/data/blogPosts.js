@@ -1,0 +1,32 @@
+export const blogPosts = [
+  {
+    id: 1,
+    title: 'The Art of Power Dressing: A 2024 Guide',
+    category: 'Style Guide',
+    author: 'Eleanor Vance',
+    date: 'October 26, 2023',
+    readTime: '6 min read',
+    excerpt: 'Discover how to command respect and exude confidence through strategic wardrobe choices in the modern workplace.',
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Power+Dressing',
+  },
+  {
+    id: 2,
+    title: 'Behind the Seams: The Craftsmanship of a Boreland Suit',
+    category: 'Craftsmanship',
+    author: 'Julian Croft',
+    date: 'October 15, 2023',
+    readTime: '8 min read',
+    excerpt: 'A deep dive into the meticulous process, premium materials, and skilled artisans behind our signature suits.',
+    imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Behind+the+Seams',
+  },
+  {
+    id: 3,
+    title: 'Accessorizing for Success: The Timeless Appeal of a Good Watch',
+    category: 'Lifestyle',
+    author: 'Victoria Sterling',
+    date: 'September 30, 2023',
+    readTime: '7 min read',
+    excerpt: 'Learn how a classic timepiece can elevate your professional image and serve as a statement of intent.',
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Accessorizing',
+  },
+];

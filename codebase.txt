@@ -1,0 +1,4703 @@
+============================
+AI ANALYSIS INSTRUCTIONS
+============================
+You are an experienced software developer with over 10 years of professional coding experience. You write clean, efficient, and well-documented code following best practices. You focus on scalability, security, and performance.
+
+When I provide my full codebase, follow these rules:
+
+1. Analyze the entire codebase and give a clear summary that includes:
+
+The project’s file/folder structure in Linux tree format.
+
+The main programming language used.
+
+Any supporting frameworks, libraries, or tools.
+
+The entry point(s) and other key components.
+
+The project’s purpose (if identifiable).
+
+
+
+2. After the summary:
+
+List files where changes are required.
+
+Wait for my confirmation before editing anything.
+
+
+
+3. When sharing updated code:
+
+Show the file name first.
+
+Then show the entire updated code for that file.
+
+After the code, repeat the file name again and include this Termux command format:
+
+truncate -s 0 <filename> && nano <filename>
+
+(Replace <filename> with the actual file name.)
+
+This command will clear the existing code and open the file in nano for me to paste the new code.
+
+Share only one file at a time.
+
+Keep comments minimal and remove any outdated ones.
+
+Do not include explanations unless I ask for them.
+
+
+
+4. When explanations are requested:
+
+Use simple and clear language.
+
+
+
+5. Never move to the next step unless I explicitly instruct you to.
+
+
+============================
+===== INCLUDED CODE FILES ======
+
+====================================================================
+>>> FILE: ./masterplan.md
+====================================================================
+1. App Overview and Objectives
+
+The goal of the website is to create a professional, corporate online presence for the company, enabling:
+
+Showcasing company information, products, and services
+
+Selling products/services online via e-commerce
+
+Allowing user interaction through accounts, inquiries, and engagement features
+
+Integrating with third-party tools and managing high traffic effectively
+
+
+2. Target Audience
+
+General customers and corporate clients
+
+Age range: 25–40 years
+
+Geography: Primarily your business regions
+
+Users expect a professional, intuitive, and responsive website
+
+
+3. Core Features and Functionality
+
+Homepage: Company overview, highlights, key services/products
+
+Product/Service Pages: Detailed info with images, descriptions, and files
+
+E-commerce: Shopping cart, checkout, secure payment integration (Stripe/Razorpay/PayPal)
+
+User Accounts: Registration/login (email + social), profile management
+
+Blog/Updates: Regular company updates, articles for SEO
+
+Contact & Enquiry Forms: For client inquiries, support requests
+
+Admin Panel: Manage products, blogs, users, and orders
+
+Real-time Features: Notifications, chat, live updates for engagement
+
+Third-party Integrations: CRM, email marketing, analytics, ERP
+
+
+4. High-Level Technical Stack Recommendations
+
+Frontend: Modern responsive framework (e.g., React or Vue) for interactive elements
+
+Backend: Node.js/Express, Python/Django, or PHP/Laravel for robust content management
+
+Database: Relational DB (PostgreSQL/MySQL) for structured data; optionally NoSQL (MongoDB) for high flexibility
+
+Hosting: Cloud hosting (AWS, Azure, or Google Cloud) for scalability
+
+Storage: Cloud storage (S3, Google Cloud Storage) for images and files
+
+Security: HTTPS, secure authentication, role-based access, payment security compliance
+
+
+5. Conceptual Data Model
+
+Users: Accounts, login credentials, profile info
+
+Products/Services: Details, pricing, images, documents
+
+Orders: Transactions, payment status, order history
+
+Blog/Updates: Articles, media, publication date
+
+Admin: Access rights, content management controls
+
+Interactions: Contact messages, enquiries, chat logs
+
+
+6. User Interface Design Principles
+
+Corporate, professional style using brand colors
+
+Clean, intuitive navigation
+
+Interactive elements to engage users (hover effects, animations, call-to-action highlights)
+
+Fully responsive layout for desktop, tablet, and mobile
+
+
+7. Security Considerations
+
+Secure login and social authentication
+
+Payment gateway integration with industry-standard security
+
+Role-based access control for admins and users
+
+Secure storage and transfer of sensitive user data
+
+
+8. Development Phases / Milestones
+
+1. Planning & Requirements – Finalize features, UI concepts, and integrations
+
+
+2. Design – Wireframes, mockups, and UI/UX approval
+
+
+3. Backend & Database Setup – User management, content management, e-commerce setup
+
+
+4. Frontend Development – Responsive pages, interactive elements
+
+
+5. Integrations – Payment gateway, CRM, analytics, chat system
+
+
+6. Testing & QA – Functional, usability, performance, and security tests
+
+
+7. Launch – Deployment to cloud hosting, monitoring setup
+
+
+8. Post-Launch Enhancements – Feature upgrades, SEO, marketing tools
+
+
+
+9. Potential Challenges and Solutions
+
+High traffic handling: Use cloud hosting with scalable instances
+
+Data security: Implement HTTPS, secure authentication, and encryption
+
+Interactive performance: Optimize frontend performance and lazy-load resources
+
+Integration complexity: Plan API endpoints carefully and test third-party tools
+
+
+10. Future Expansion Possibilities
+
+Dedicated mobile app for iOS/Android
+
+Advanced analytics dashboard for user insights
+
+Multi-language support for international reach
+
+Loyalty programs or subscription services
+
+AI-powered recommendations for products/services
+
+====================================================================
+>>> FILE: ./package.json
+====================================================================
+{
+  "name": "boreland-corporate-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "baseline-browser-mapping": "^2.9.11",
+    "jsdom": "^23.0.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "3.4.1",
+    "vite": "^5.0.8",
+    "vitest": "^1.1.0"
+  }
+}
+
+====================================================================
+>>> FILE: ./.gitignore
+====================================================================
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-temporary-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Vite build output
+dist
+.vite
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Vitest
+.vitest-cache
+
+# IDE files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vercel
+
+====================================================================
+>>> FILE: ./index.html
+====================================================================
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <title>Boreland</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+====================================================================
+>>> FILE: ./README.md
+====================================================================
+# Boreland Corporate Website Project
+
+This project is a modern corporate website for Boreland, built with React, Vite, and Tailwind CSS. It serves as a professional online presence with e-commerce capabilities, user accounts, and an administrative backend.
+
+## Core Features (Planned)
+
+-   **Homepage:** Company overview and highlights.
+-   **Product/Service Pages:** Detailed product information.
+-   **E-commerce:** Shopping cart and checkout functionality.
+-   **User Accounts:** User registration, login, and profile management.
+-   **Blog/Updates:** Articles for content marketing and SEO.
+-   **Contact & Enquiry Form:** For client and support requests.
+-   **Admin Panel:** To manage products, users, and orders.
+
+## Technology Stack
+
+-   **Frontend:** React
+-   **Styling:** Tailwind CSS
+-   **Build Tool:** Vite
+-   **Routing:** React Router
+-   **API Requests:** Axios (simulated)
+
+## Project Setup
+
+1.  **Install Dependencies:**
+    ```sh
+    npm install
+    ```
+
+2.  **Run the Development Server:**
+    ```sh
+    npm run dev
+    ```
+
+3.  **Build for Production:**
+    ```sh
+    npm run build
+    ```
+
+====================================================================
+>>> FILE: ./src/main.jsx
+====================================================================
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+====================================================================
+>>> FILE: ./src/App.jsx
+====================================================================
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
+import { ProductProvider } from './context/ProductContext';
+import { BlogProvider } from './context/BlogContext';
+import { UserProvider } from './context/UserContext';
+import { OrderProvider } from './context/OrderContext';
+import { SettingsProvider } from './context/SettingsContext';
+
+// Layouts
+import Layout from './components/Layout';
+import AdminLayout from './components/admin/AdminLayout';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+
+// Core Pages
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import BlogPage from './pages/BlogPage';
+import ContactPage from './pages/ContactPage';
+import CartPage from './pages/cart/CartPage';
+
+// Auth Pages
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
+import UpdatePasswordPage from './pages/auth/UpdatePasswordPage';
+import AdminLoginPage from './pages/admin/AdminLoginPage'; // New Admin Login
+
+// Account Pages
+import ProfilePage from './pages/account/ProfilePage';
+
+// Admin Pages
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import ManageProductsPage from './pages/admin/ManageProductsPage';
+import ManageOrdersPage from './pages/admin/ManageOrdersPage';
+import ManageUsersPage from './pages/admin/ManageUsersPage';
+import ManageCouponsPage from './pages/admin/ManageCouponsPage'; // New Coupon Page
+import AddProductPage from './pages/admin/AddProductPage';
+import EditProductPage from './pages/admin/EditProductPage';
+import ManageBlogPostsPage from './pages/admin/ManageBlogPostsPage';
+import AddBlogPostPage from './pages/admin/AddBlogPostPage';
+import EditBlogPostPage from './pages/admin/EditBlogPostPage';
+import AddUserPage from './pages/admin/AddUserPage';
+import EditUserPage from './pages/admin/EditUserPage';
+import AdminSettingsPage from './pages/admin/AdminSettingsPage';
+
+const AppProviders = ({ children }) => (
+  <AuthProvider>
+    <UserProvider>
+      <ProductProvider>
+        <BlogProvider>
+          <OrderProvider>
+            <CartProvider>
+              <SettingsProvider>{children}</SettingsProvider>
+            </CartProvider>
+          </OrderProvider>
+        </BlogProvider>
+      </ProductProvider>
+    </UserProvider>
+  </AuthProvider>
+);
+
+function App() {
+  return (
+    <AppProviders>
+      <Routes>
+        {/* Public Website Layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="products/:productId" element={<ProductDetailPage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          
+          {/* Customer Auth */}
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="cart" element={<CartPage />} />
+          
+          {/* Customer Protected Routes */}
+          <Route
+            path="account/profile"
+            element={<ProtectedRoute><ProfilePage /></ProtectedRoute>}
+          />
+          <Route
+            path="account/update-password"
+            element={<ProtectedRoute><UpdatePasswordPage /></ProtectedRoute>}
+          />
+        </Route>
+
+        {/* Admin Login (Standalone) */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+
+        {/* Admin Panel Layout (Protected & Role Restricted) */}
+        <Route
+          path="/admin"
+          element={<ProtectedRoute requiredRole="Admin"><AdminLayout /></ProtectedRoute>}
+        >
+          <Route index element={<AdminDashboardPage />} />
+          <Route path="products" element={<ManageProductsPage />} />
+          <Route path="products/new" element={<AddProductPage />} />
+          <Route path="products/edit/:productId" element={<EditProductPage />} />
+          <Route path="blog" element={<ManageBlogPostsPage />} />
+          <Route path="blog/new" element={<AddBlogPostPage />} />
+          <Route path="blog/edit/:postId" element={<EditBlogPostPage />} />
+          <Route path="orders" element={<ManageOrdersPage />} />
+          <Route path="users" element={<ManageUsersPage />} />
+          <Route path="users/new" element={<AddUserPage />} />
+          <Route path="users/edit/:userId" element={<EditUserPage />} />
+          <Route path="coupons" element={<ManageCouponsPage />} /> {/* New Route */}
+          <Route path="settings" element={<AdminSettingsPage />} />
+        </Route>
+      </Routes>
+    </AppProviders>
+  );
+}
+
+export default App;
+
+====================================================================
+>>> FILE: ./src/index.css
+====================================================================
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-dark-text font-sans antialiased selection:bg-primary selection:text-background;
+  }
+
+  #root {
+    @apply flex flex-col min-h-screen;
+  }
+
+  main {
+    @apply flex-grow w-full max-w-[1920px] mx-auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-primary tracking-tight;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .badge {
+    @apply px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-sm;
+  }
+}
+
+/* Add safe area padding for bottom nav on newer iPhones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+====================================================================
+>>> FILE: ./src/components/Layout.jsx
+====================================================================
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import MobileBottomNav from './MobileBottomNav';
+
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      {/* Add padding bottom on mobile to account for the fixed nav */}
+      <main className="pb-20 md:pb-0">
+        <Outlet />
+      </main>
+      <Footer />
+      <MobileBottomNav />
+    </>
+  );
+};
+
+export default Layout;
+
+====================================================================
+>>> FILE: ./src/components/Header.jsx
+====================================================================
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { useSettings } from '../context/SettingsContext';
+
+const Header = () => {
+  const { cartItems } = useCart();
+  const { isAuthenticated, currentUser, logout } = useAuth();
+  const { settings } = useSettings();
+  const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const navLinkClasses = ({ isActive }) =>
+    `text-sm font-medium uppercase tracking-wider transition-colors duration-200 ${
+      isActive ? 'text-black font-bold' : 'text-gray-500 hover:text-black'
+    }`;
+
+  return (
+    <header className="w-full bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+      <div className="container-custom flex items-center justify-between h-16 gap-4">
+        
+        {/* Logo */}
+        <Link to="/" className="flex-shrink-0 flex items-center gap-2">
+          {settings.logo_url ? (
+            <img
+              src={settings.logo_url}
+              alt={settings.site_name || 'Boreland Logo'}
+              className="h-8 w-auto object-contain"
+            />
+          ) : (
+            <>
+              {/* Logo Icon */}
+              <div className="bg-black text-white w-8 h-8 flex items-center justify-center font-serif font-bold text-lg rounded-sm">
+                B
+              </div>
+              {/* Logo Text (Hidden on very small screens if needed, but keeping for brand) */}
+              <span className="font-serif text-lg md:text-xl font-bold text-black tracking-tighter hidden xs:block">
+                BORELAND
+              </span>
+            </>
+          )}
+        </Link>
+
+        {/* Search Bar (Matches Reference) */}
+        <div className="flex-grow max-w-2xl">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-black focus:ring-1 focus:ring-black sm:text-sm transition-shadow"
+              placeholder="Search products..."
+            />
+          </div>
+        </div>
+        
+        {/* Desktop Navigation (Hidden on Mobile) */}
+        <nav className="hidden md:flex gap-6 items-center">
+          <NavLink to="/" className={navLinkClasses}>Home</NavLink>
+          <NavLink to="/products" className={navLinkClasses}>Shop</NavLink>
+          <NavLink to="/blog" className={navLinkClasses}>Journal</NavLink>
+        </nav>
+        
+        {/* Desktop Icons (Hidden on Mobile - handled by Bottom Nav) */}
+        <div className="hidden md:flex items-center gap-5 pl-4 border-l border-gray-200">
+          {isAuthenticated ? (
+            <div className="relative group">
+              <Link to="/account/profile" className="text-gray-600 hover:text-black flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+              </Link>
+              {/* Dropdown */}
+              <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50 border border-gray-100">
+                <div className="py-1">
+                  <Link to="/account/profile" className="block px-4 py-2 text-sm hover:bg-gray-100">My Profile</Link>
+                  <Link to="/orders" className="block px-4 py-2 text-sm hover:bg-gray-100">Orders</Link>
+                  {currentUser?.role === 'Admin' && (
+                    <Link to="/admin" className="block px-4 py-2 text-sm hover:bg-gray-100 font-bold text-blue-600">Admin Panel</Link>
+                  )}
+                  <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Sign Out</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <Link to="/login" className="text-gray-600 hover:text-black">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </Link>
+          )}
+          
+          <Link to="/cart" className="relative text-gray-600 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+            {totalItemsInCart > 0 && (
+              <span className="absolute -top-2 -right-2 flex items-center justify-center w-4 h-4 text-[10px] font-bold bg-red-600 text-white rounded-full">
+                {totalItemsInCart}
+              </span>
+            )}
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
+
+====================================================================
+>>> FILE: ./src/components/ui/Button.jsx
+====================================================================
+import React from 'react';
+
+const Button = ({ children, onClick, variant = 'primary', className = '', ...props }) => {
+  const baseStyles = 'font-semibold py-2 px-6 uppercase tracking-wider transition-all duration-300 transform';
+
+  const variantStyles = {
+    primary: 'bg-primary text-background hover:bg-secondary hover:text-background',
+    secondary: 'border border-secondary text-secondary hover:border-primary hover:text-primary',
+  };
+
+  const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${className}`;
+
+  return (
+    <button onClick={onClick} className={combinedClasses} {...props}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+
+====================================================================
+>>> FILE: ./src/components/ui/Button.test.jsx
+====================================================================
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, test, expect, vi } from 'vitest';
+import Button from './Button';
+
+describe('Button Component', () => {
+  test('renders button with correct text and handles click', async () => {
+    const handleClick = vi.fn();
+    
+    render(<Button onClick={handleClick}>Click Me</Button>);
+    
+    const buttonElement = screen.getByRole('button', { name: /Click Me/i });
+    expect(buttonElement).toBeInTheDocument();
+    
+    await userEvent.click(buttonElement);
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders with primary variant styles by default', () => {
+    render(<Button>Primary Button</Button>);
+    const buttonElement = screen.getByRole('button', { name: /Primary Button/i });
+    expect(buttonElement).toHaveClass('bg-primary');
+  });
+
+  test('renders with secondary variant styles when specified', () => {
+    render(<Button variant="secondary">Secondary Button</Button>);
+    const buttonElement = screen.getByRole('button', { name: /Secondary Button/i });
+    expect(buttonElement).toHaveClass('border-secondary');
+    expect(buttonElement).not.toHaveClass('bg-primary');
+  });
+});
+
+====================================================================
+>>> FILE: ./src/components/Footer.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Footer = () => {
+  return (
+    <footer className="w-full bg-surface border-t border-gray-800 mt-auto py-10 px-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+        <p className="text-sm text-dark-text">
+          &copy; {new Date().getFullYear()} Boreland. All rights reserved.
+        </p>
+        <div className="flex gap-6">
+          <Link to="#" className="text-sm text-secondary hover:text-primary transition-colors">
+            Privacy Policy
+          </Link>
+          <Link to="#" className="text-sm text-secondary hover:text-primary transition-colors">
+            Terms of Service
+          </Link>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+====================================================================
+>>> FILE: ./src/components/home/HeroSection.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
+
+const HeroSection = () => {
+  return (
+    <section className="relative w-full h-[60vh] md:h-[85vh] overflow-hidden">
+      {/* Background Image */}
+      <img 
+        src="https://placehold.co/1920x1080/121212/333333?text=Boreland+Global+Collection" 
+        alt="Hero Banner" 
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+      
+      <div className="relative z-10 h-full container-custom flex items-center">
+        <div className="max-w-2xl text-white pt-20">
+          <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
+            New Season Arrival
+          </span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-none mb-6 text-white">
+            Define Your <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">Legacy.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-lg leading-relaxed font-light">
+            Impeccable tailoring meeting modern aesthetics. Discover the new standard in executive luxury.
+          </p>
+          <div className="flex gap-4">
+            <Link to="/products">
+              <Button className="bg-white text-black hover:bg-gray-200 border-none px-8 py-3.5">
+                Shop Collection
+              </Button>
+            </Link>
+            <Link to="/products?category=sale">
+              <Button variant="secondary" className="border-white text-white hover:bg-white hover:text-black px-8 py-3.5">
+                View Sales
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
+
+====================================================================
+>>> FILE: ./src/components/home/FeaturesSection.jsx
+====================================================================
+import React from 'react';
+
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="bg-surface p-8 text-center border border-gray-800">
+    <div className="mb-4 text-primary inline-block">{icon}</div>
+    <h3 className="text-xl font-serif font-bold text-primary mb-2">{title}</h3>
+    <p className="text-dark-text">{description}</p>
+  </div>
+);
+
+const FeaturesSection = () => {
+  const features = [
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622 3.385m-5.043-.025a15.998 15.998 0 01-3.388 1.622m5.043.025a15.998 15.998 0 013.388 1.622m-1.623-8.475a3 3 0 00-4.242-4.242" />
+        </svg>
+      ),
+      title: 'Timeless Design',
+      description: 'Our collections are crafted with enduring style, transcending fleeting trends for a lifetime of elegance.',
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 1.5v21m-8.25-6.75h16.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 1.5C7.58172 1.5 4.5 4.58172 4.5 9c0 4.4183 3.08172 7.5 7.5 7.5s7.5-3.0817 7.5-7.5c0-4.41828-3.08172-7.5-7.5-7.5z" />
+        </svg>
+      ),
+      title: 'Premium Materials',
+      description: 'We source only the finest fabrics and leathers from renowned mills and tanneries across the globe.',
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.73-.626 1.196-.626h.178c.47 0 .897.242 1.196.626l2.496 3.03M11.42 15.17L9.25 12.5a2.652 2.652 0 00-3.75 0L3 17.25A2.652 2.652 0 006.75 21l2.5-2.5m0 0l2.17-2.17" />
+        </svg>
+      ),
+      title: 'Expert Craftsmanship',
+      description: 'Each garment is meticulously constructed by master tailors with decades of experience in their craft.',
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-serif font-bold text-primary">The Boreland Difference</h2>
+          <p className="text-dark-text mt-2 max-w-2xl mx-auto">
+            We are defined by an unwavering commitment to quality, heritage, and the pursuit of sartorial excellence.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} {...feature} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturesSection;
+
+====================================================================
+>>> FILE: ./src/components/home/CTASection.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
+
+const CTASection = () => {
+  return (
+    <section className="bg-surface">
+      <div className="max-w-6xl mx-auto px-8 py-16 text-center">
+        <h2 className="text-3xl font-serif font-bold text-primary mb-4">
+          Experience the Art of Tailoring
+        </h2>
+        <p className="text-dark-text opacity-90 mb-8 max-w-2xl mx-auto">
+          Schedule a private consultation with one of our expert stylists to discover the perfect fit and style for you.
+        </p>
+        <Link to="/contact">
+          <Button>Book a Consultation</Button>
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default CTASection;
+
+====================================================================
+>>> FILE: ./src/components/home/CategoryGrid.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const CategoryItem = ({ title, image, discount }) => (
+  <Link to="/products" className="group relative block overflow-hidden rounded-lg aspect-[4/5] md:aspect-[3/4]">
+    <img 
+      src={image} 
+      alt={title} 
+      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+    
+    {/* Discount Bubble Top Left */}
+    <div className="absolute -top-12 -left-12 w-24 h-24 bg-red-600 rounded-full flex items-end justify-center pb-4 pr-4 transition-transform group-hover:scale-110">
+        <span className="text-white font-bold text-xs pl-6 pt-6 block rotate-[-45deg]">{discount}</span>
+    </div>
+
+    <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded text-center transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+      <span className="block font-bold text-gray-900 text-sm uppercase tracking-wider">{title}</span>
+    </div>
+  </Link>
+);
+
+const CategoryGrid = () => {
+  const categories = [
+    { title: "Formal Suits", image: "https://placehold.co/600x800/1a1a1a/eaeaea?text=Suits", discount: "40% OFF" },
+    { title: "Luxury Blazers", image: "https://placehold.co/600x800/2a2a2a/eaeaea?text=Blazers", discount: "30% OFF" },
+    { title: "Premium Shirts", image: "https://placehold.co/600x800/151515/eaeaea?text=Shirts", discount: "50% OFF" },
+    { title: "Trousers", image: "https://placehold.co/600x800/202020/eaeaea?text=Trousers", discount: "25% OFF" },
+    { title: "Leather Shoes", image: "https://placehold.co/600x800/000000/eaeaea?text=Shoes", discount: "20% OFF" },
+    { title: "Accessories", image: "https://placehold.co/600x800/333333/eaeaea?text=Accessories", discount: "15% OFF" },
+  ];
+
+  return (
+    <section className="py-12 bg-white">
+      <div className="container-custom">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center uppercase tracking-tight font-serif">
+          Shop By Category
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {categories.map((cat, idx) => (
+            <CategoryItem key={idx} {...cat} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CategoryGrid;
+
+====================================================================
+>>> FILE: ./src/components/products/ProductCard.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+
+const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
+
+  // Calculate a fake original price for the "Sale" look (randomly 20-40% higher)
+  const originalPrice = product.price * 1.3;
+  const discountPercent = Math.round(((originalPrice - product.price) / originalPrice) * 100);
+
+  return (
+    <div className="group relative bg-white rounded-lg overflow-hidden border border-gray-800/50 hover:border-gray-600 transition-all duration-300 hover:shadow-xl flex flex-col h-full">
+      <Link to={`/products/${product.id}`} className="block relative overflow-hidden aspect-[4/5]">
+        {/* Top Label */}
+        <div className="absolute inset-x-0 top-0 z-10 h-6 bg-gray-100 flex items-center justify-center">
+          <span className="text-gray-900 font-bold text-[10px] uppercase tracking-widest">
+            {product.id % 2 === 0 ? 'EXCLUSIVE' : 'BESTSELLER'}
+          </span>
+        </div>
+
+        {/* Image */}
+        <img 
+          src={product.imageUrl} 
+          alt={product.name} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        
+        {/* Overlay Gradient */}
+        <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-300" />
+
+        {/* Floating Icons/Badges */}
+        <div className="absolute top-8 left-0 right-0 p-3 flex justify-between items-start">
+          <span className="bg-green-700 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+            {discountPercent}% OFF
+          </span>
+          
+          <button 
+            className="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-900 transition-colors shadow-sm"
+            onClick={(e) => {
+              e.preventDefault();
+              // Add wishlist logic here
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Quick Add Overlay (Mobile style or Desktop hover) */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}
+            className="w-full bg-white text-black font-bold uppercase text-xs py-3 hover:bg-gray-200 transition-colors"
+          >
+            Quick Add
+          </button>
+        </div>
+      </Link>
+
+      {/* Product Details */}
+      <div className="p-4 flex flex-col flex-grow bg-white">
+        <div className="mb-1 flex gap-1">
+           {/* Color Swatches Mockup */}
+           <div className="w-3 h-3 rounded-full border border-gray-300 bg-gray-800"></div>
+           <div className="w-3 h-3 rounded-full border border-gray-300 bg-blue-900"></div>
+        </div>
+        
+        <Link to={`/products/${product.id}`} className="hover:text-gray-600 transition-colors">
+          <h3 className="text-sm font-medium text-gray-900 line-clamp-1 mb-1 font-sans">
+            {product.name}
+          </h3>
+        </Link>
+        
+        <p className="text-xs text-gray-500 mb-2 line-clamp-1">{product.category}</p>
+
+        <div className="mt-auto flex items-center gap-2">
+          <span className="text-sm font-bold text-gray-900">
+            ${product.price.toFixed(2)}
+          </span>
+          <span className="text-xs text-gray-400 line-through">
+            ${originalPrice.toFixed(2)}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
+
+====================================================================
+>>> FILE: ./src/components/products/StarRating.jsx
+====================================================================
+import React from 'react';
+
+const StarRating = ({ rating = 0, className = '' }) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  const starIcon = (fill) => (
+    <svg className="w-5 h-5" fill={fill} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+  );
+
+  return (
+    <div className={`flex items-center text-primary ${className}`}>
+      {[...Array(fullStars)].map((_, i) => (
+        <div key={`full-${i}`}>{starIcon('currentColor')}</div>
+      ))}
+      {halfStar && (
+        <div className="relative">
+          {starIcon('rgba(234, 234, 234, 0.3)')}
+          <div className="absolute top-0 left-0 w-1/2 h-full overflow-hidden">
+            {starIcon('currentColor')}
+          </div>
+        </div>
+      )}
+      {[...Array(emptyStars)].map((_, i) => (
+        <div key={`empty-${i}`}>{starIcon('rgba(234, 234, 234, 0.3)')}</div>
+      ))}
+    </div>
+  );
+};
+
+export default StarRating;
+
+====================================================================
+>>> FILE: ./src/components/blog/BlogPostCard.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const BlogPostCard = ({ post }) => {
+  return (
+    <article className="bg-surface overflow-hidden group">
+      <Link to={`/blog/${post.id}`} className="block overflow-hidden">
+        <img 
+          src={post.imageUrl} 
+          alt={post.title} 
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" 
+        />
+      </Link>
+      <div className="p-6">
+        <div className="mb-3">
+          <span className="text-sm font-semibold text-secondary uppercase tracking-wider">{post.category}</span>
+        </div>
+        <h2 className="text-2xl font-serif font-bold text-primary mb-2">
+          <Link to={`/blog/${post.id}`} className="hover:text-secondary transition-colors">
+            {post.title}
+          </Link>
+        </h2>
+        <p className="text-dark-text mb-4">
+          {post.excerpt}
+        </p>
+        <div className="text-xs text-gray-500 uppercase tracking-wider">
+          <span>By {post.author}</span>
+          <span className="mx-2">&bull;</span>
+          <span>{post.date}</span>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default BlogPostCard;
+
+====================================================================
+>>> FILE: ./src/components/auth/ProtectedRoute.jsx
+====================================================================
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+
+const ProtectedRoute = ({ children, requiredRole }) => {
+  const { isAuthenticated, currentUser, loading } = useAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return <div className="p-8 text-center text-secondary">Loading access...</div>;
+  }
+
+  // 1. Check if logged in
+  if (!isAuthenticated) {
+    // If trying to access admin, redirect to admin login, otherwise standard login
+    const loginPath = location.pathname.startsWith('/admin') ? '/admin/login' : '/login';
+    return <Navigate to={loginPath} state={{ from: location }} replace />;
+  }
+
+  // 2. Check Role (if a specific role is required)
+  if (requiredRole && currentUser?.role !== requiredRole) {
+    // User is logged in but doesn't have permission
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;
+
+====================================================================
+>>> FILE: ./src/components/admin/AdminLayout.jsx
+====================================================================
+import React from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+
+const AdminLayout = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/admin/login');
+  };
+
+  const navLinkClasses = ({ isActive }) =>
+    `block py-2.5 px-4 rounded transition duration-200 text-sm ${isActive ? 'bg-primary text-background font-semibold' : 'hover:bg-gray-700/50 text-secondary'}`;
+
+  return (
+    <div className="flex min-h-screen">
+      <aside className="w-64 bg-surface flex-shrink-0 border-r border-gray-800 flex flex-col">
+        <div className="p-6 border-b border-gray-800">
+          <h2 className="text-xl font-bold text-primary font-serif">Admin Panel</h2>
+          <p className="text-xs text-secondary mt-1">Boreland Fashions</p>
+        </div>
+        <nav className="flex-1 p-2 space-y-1 mt-4">
+          <NavLink to="/admin" end className={navLinkClasses}>
+            Dashboard
+          </NavLink>
+          <NavLink to="/admin/orders" className={navLinkClasses}>
+            Orders & Sales
+          </NavLink>
+          <NavLink to="/admin/products" className={navLinkClasses}>
+            Products
+          </NavLink>
+          <NavLink to="/admin/coupons" className={navLinkClasses}>
+            Coupons & Offers
+          </NavLink>
+          <NavLink to="/admin/users" className={navLinkClasses}>
+            Users
+          </NavLink>
+          <NavLink to="/admin/blog" className={navLinkClasses}>
+            Blog Posts
+          </NavLink>
+          <NavLink to="/admin/settings" className={navLinkClasses}>
+            Site Settings
+          </NavLink>
+        </nav>
+        <div className="p-4 border-t border-gray-800">
+          <button onClick={handleLogout} className="w-full text-left py-2 px-4 text-sm text-red-400 hover:bg-red-900/20 rounded transition-colors">
+            Sign Out
+          </button>
+        </div>
+      </aside>
+      <main className="flex-1 p-8 bg-background overflow-y-auto">
+        <Outlet />
+      </main>
+    </div>
+  );
+};
+
+export default AdminLayout;
+
+====================================================================
+>>> FILE: ./src/components/admin/ProductForm.jsx
+====================================================================
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../ui/Button';
+
+const ProductForm = ({ onSubmit, initialData = {} }) => {
+  const [product, setProduct] = useState({
+    name: '',
+    description: '',
+    price: '',
+    imageUrl: '',
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (initialData) {
+      setProduct({
+        name: initialData.name || '',
+        description: initialData.description || '',
+        price: initialData.price || '',
+        imageUrl: initialData.imageUrl || '',
+      });
+    }
+  }, [initialData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(product);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-surface p-6 border border-gray-800">
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Product Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={product.name}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="description" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          value={product.description}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        ></textarea>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="price" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Price</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          step="0.01"
+          value={product.price}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+      </div>
+      <div className="mb-6">
+        <label htmlFor="imageUrl" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Image URL</label>
+        <input
+          type="text"
+          id="imageUrl"
+          name="imageUrl"
+          value={product.imageUrl}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="https://placehold.co/600x400"
+          required
+        />
+      </div>
+      <div className="flex gap-4">
+        <Button type="submit">
+          Save Product
+        </Button>
+        <Button type="button" variant="secondary" onClick={() => navigate('/admin/products')}>
+          Cancel
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+export default ProductForm;
+
+====================================================================
+>>> FILE: ./src/components/admin/BlogPostForm.jsx
+====================================================================
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../ui/Button';
+
+const BlogPostForm = ({ onSubmit, initialData = {} }) => {
+  const [post, setPost] = useState({
+    title: '',
+    category: '',
+    author: '',
+    readTime: '',
+    excerpt: '',
+    imageUrl: '',
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (initialData) {
+      setPost({
+        title: initialData.title || '',
+        category: initialData.category || '',
+        author: initialData.author || '',
+        readTime: initialData.readTime || '',
+        excerpt: initialData.excerpt || '',
+        imageUrl: initialData.imageUrl || '',
+      });
+    }
+  }, [initialData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPost((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(post);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-surface p-6 border border-gray-800">
+      <div className="mb-4">
+        <label htmlFor="title" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Post Title</label>
+        <input type="text" id="title" name="title" value={post.title} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" required />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <label htmlFor="category" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Category</label>
+          <input type="text" id="category" name="category" value={post.category} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" required />
+        </div>
+        <div>
+          <label htmlFor="author" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Author</label>
+          <input type="text" id="author" name="author" value={post.author} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" required />
+        </div>
+        <div>
+          <label htmlFor="readTime" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Read Time</label>
+          <input type="text" id="readTime" name="readTime" value={post.readTime} onChange={handleChange} placeholder="e.g., 5 min read" className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" required />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="excerpt" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Excerpt</label>
+        <textarea id="excerpt" name="excerpt" rows="4" value={post.excerpt} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+      </div>
+      <div className="mb-6">
+        <label htmlFor="imageUrl" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Image URL</label>
+        <input type="text" id="imageUrl" name="imageUrl" value={post.imageUrl} onChange={handleChange} className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="https://placehold.co/600x400" required />
+      </div>
+      <div className="flex gap-4">
+        <Button type="submit">Save Post</Button>
+        <Button type="button" variant="secondary" onClick={() => navigate('/admin/blog')}>
+          Cancel
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+export default BlogPostForm;
+
+====================================================================
+>>> FILE: ./src/components/admin/UserForm.jsx
+====================================================================
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../ui/Button';
+
+const UserForm = ({ onSubmit, initialData = {} }) => {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    role: 'Customer',
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (initialData) {
+      setUser({
+        name: initialData.name || '',
+        email: initialData.email || '',
+        role: initialData.role || 'Customer',
+      });
+    }
+  }, [initialData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(user);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-surface p-6 border border-gray-800">
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={user.name}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={user.email}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+      </div>
+      <div className="mb-6">
+        <label htmlFor="role" className="block text-sm font-medium mb-2 uppercase tracking-wider text-secondary">Role</label>
+        <select
+          id="role"
+          name="role"
+          value={user.role}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <option value="Customer">Customer</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </div>
+      <div className="flex gap-4">
+        <Button type="submit">
+          Save User
+        </Button>
+        <Button type="button" variant="secondary" onClick={() => navigate('/admin/users')}>
+          Cancel
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+export default UserForm;
+
+====================================================================
+>>> FILE: ./src/components/common/CountdownTimer.jsx
+====================================================================
+import React, { useState, useEffect } from 'react';
+
+const CountdownTimer = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval] && timeLeft[interval] !== 0) {
+      return;
+    }
+
+    timerComponents.push(
+      <div key={interval} className="text-center">
+        <span className="text-4xl md:text-6xl font-serif text-primary">
+          {String(timeLeft[interval]).padStart(2, '0')}
+        </span>
+        <span className="block text-sm uppercase tracking-widest text-secondary mt-2">
+          {interval}
+        </span>
+      </div>
+    );
+  });
+
+  return (
+    <div className="flex justify-center gap-4 md:gap-8">
+      {timerComponents.length ? timerComponents : <span>Launching!</span>}
+    </div>
+  );
+};
+
+export default CountdownTimer;
+
+====================================================================
+>>> FILE: ./src/components/MobileBottomNav.jsx
+====================================================================
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+
+const MobileBottomNav = () => {
+  const { cartItems } = useCart();
+  const location = useLocation();
+  const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  // Helper to determine active state styling
+  const getLinkClass = (path) => {
+    const isActive = location.pathname === path;
+    return `flex flex-col items-center justify-center w-full h-full gap-1 pt-2 pb-3 transition-colors duration-200 ${
+      isActive ? 'text-black' : 'text-gray-500 hover:text-gray-900'
+    }`;
+  };
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 md:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+      <div className="flex justify-between items-end h-16 px-2">
+        
+        {/* 1. Category */}
+        <NavLink to="/products" className={getLinkClass('/products')}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect width="7" height="7" x="3" y="3" rx="1" />
+            <rect width="7" height="7" x="14" y="3" rx="1" />
+            <rect width="7" height="7" x="14" y="14" rx="1" />
+            <rect width="7" height="7" x="3" y="14" rx="1" />
+          </svg>
+          <span className="text-[10px] font-medium">Category</span>
+        </NavLink>
+
+        {/* 2. Wishlist (Links to Profile for now as wishlist placeholder) */}
+        <NavLink to="/account/profile" className={getLinkClass('/wishlist')}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg>
+          <span className="text-[10px] font-medium">Wishlist</span>
+        </NavLink>
+
+        {/* 3. Home (Center Circle) */}
+        <div className="relative -top-5 w-full flex justify-center pointer-events-none">
+          <NavLink to="/" className="pointer-events-auto">
+            <div className="w-14 h-14 bg-[#1A1A1A] rounded-full flex flex-col items-center justify-center shadow-lg border-4 border-white transform transition-transform active:scale-95">
+              {/* Using a Tree/Brand Icon similar to reference but fitting Boreland theme */}
+              <span className="text-white font-serif text-xl font-bold">B</span>
+            </div>
+            <span className="text-[10px] font-medium text-black block text-center mt-1">Home</span>
+          </NavLink>
+        </div>
+
+        {/* 4. Cart */}
+        <NavLink to="/cart" className={getLinkClass('/cart')}>
+          <div className="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+              <path d="M3 6h18" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            {totalItemsInCart > 0 && (
+              <span className="absolute -top-2 -right-2 flex items-center justify-center w-4 h-4 text-[9px] font-bold bg-red-600 text-white rounded-full border border-white">
+                {totalItemsInCart}
+              </span>
+            )}
+          </div>
+          <span className="text-[10px] font-medium">Cart</span>
+        </NavLink>
+
+        {/* 5. Orders */}
+        <NavLink to="/orders" className={getLinkClass('/orders')}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+            <path d="M12 22V12" />
+            <polyline points="3.29 7 12 12 20.71 7" />
+            <path d="m7.5 4.27 9 5.15" />
+          </svg>
+          <span className="text-[10px] font-medium">Orders</span>
+        </NavLink>
+
+      </div>
+    </div>
+  );
+};
+
+export default MobileBottomNav;
+
+====================================================================
+>>> FILE: ./src/pages/HomePage.jsx
+====================================================================
+import React, { useEffect, useState } from 'react';
+import HeroSection from '../components/home/HeroSection';
+import CategoryGrid from '../components/home/CategoryGrid';
+import ProductCard from '../components/products/ProductCard';
+import { useProducts } from '../context/ProductContext';
+import { Link } from 'react-router-dom';
+
+const HomePage = () => {
+  const { products, loading } = useProducts();
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setFeaturedProducts(products.slice(0, 4));
+    }
+  }, [products]);
+
+  return (
+    <div className="bg-white">
+      <HeroSection />
+      
+      {/* Category Grid Section */}
+      <CategoryGrid />
+
+      {/* Featured Products Carousel/Grid */}
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
+        <div className="container-custom">
+          <div className="flex justify-between items-end mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 font-serif">Exclusives</h2>
+              <p className="text-gray-500 mt-2">Curated selections for the discerning gentleman.</p>
+            </div>
+            <Link to="/products" className="text-sm font-bold uppercase tracking-wider text-gray-900 hover:text-gray-600 flex items-center gap-2">
+              See All
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {loading ? (
+              <p className="text-gray-500">Loading exclusives...</p>
+            ) : (
+              featuredProducts.map((product) => (
+                <div key={product.id} className="h-[450px]">
+                  <ProductCard product={product} />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Large Promo Banner */}
+      <section className="relative h-[500px] w-full bg-fixed bg-center bg-cover" style={{backgroundImage: "url('https://placehold.co/1920x800/0f0f0f/444444?text=Winter+Collection')"}}>
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-center px-4">
+          <div>
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 font-bold">The Winter Edit</h2>
+            <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">Sophisticated warmth. Explore our range of premium wool coats and cashmere sweaters.</p>
+            <Link to="/products" className="inline-block bg-white text-black px-10 py-4 font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors">
+              Explore Now
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HomePage;
+
+====================================================================
+>>> FILE: ./src/pages/ProductsPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { useProducts } from '../context/ProductContext';
+import ProductCard from '../components/products/ProductCard';
+
+const ProductsPage = () => {
+  const { products, loading, error } = useProducts();
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  if (loading) {
+    return <div className="text-center text-xl">Loading collection...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-xl text-red-500">Error: {error}</div>;
+  }
+
+  const categories = ['All', ...new Set(products.map((p) => p.category))];
+
+  const filteredProducts =
+    selectedCategory === 'All'
+      ? products
+      : products.filter((product) => product.category === selectedCategory);
+
+  return (
+    <div>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-serif font-bold mb-2">Our Collection</h1>
+        <p className="text-lg text-dark-text">
+          Crafted with precision, designed for distinction.
+        </p>
+      </div>
+
+      <div className="flex justify-center flex-wrap gap-4 mb-12">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`py-2 px-6 uppercase tracking-wider text-sm font-semibold transition-colors duration-300 ${
+              selectedCategory === category
+                ? 'bg-primary text-background'
+                : 'bg-surface text-secondary hover:bg-gray-800/50 hover:text-primary'
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductsPage;
+
+====================================================================
+>>> FILE: ./src/pages/BlogPage.jsx
+====================================================================
+import React from 'react';
+import { useBlog } from '../context/BlogContext';
+import BlogPostCard from '../components/blog/BlogPostCard';
+
+const BlogPage = () => {
+  const { posts, loading, error } = useBlog();
+
+  if (loading) {
+    return <div className="text-center text-xl">Loading journal...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-xl text-red-500">Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-2">The Journal</h1>
+        <p className="text-lg text-dark-text">
+          Stories, insights, and inspiration from the world of Boreland.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <BlogPostCard key={post.id} post={post} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BlogPage;
+
+====================================================================
+>>> FILE: ./src/pages/ContactPage.jsx
+====================================================================
+import React from 'react';
+import Button from '../components/ui/Button';
+
+const ContactPage = () => {
+  return (
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
+      <p className="text-lg text-dark-text mb-10">
+        For inquiries, appointments, or support, please fill out the form below.
+      </p>
+
+      <form className="text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="w-full px-4 py-3 bg-surface border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full px-4 py-3 bg-surface border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+        </div>
+        <div className="mb-8">
+          <label htmlFor="message" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Message
+          </label>
+          <textarea
+            id="message"
+            rows="6"
+            className="w-full px-4 py-3 bg-surface border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+          ></textarea>
+        </div>
+        <div className="text-center">
+          <Button type="submit">
+            Send Message
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default ContactPage;
+
+====================================================================
+>>> FILE: ./src/pages/auth/LoginPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../../components/ui/Button';
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [formError, setFormError] = useState('');
+  const { login, loading } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const from = location.state?.from?.pathname || '/';
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError('');
+    try {
+      await login(email, password);
+      navigate(from, { replace: true });
+    } catch (error) {
+      setFormError(error.message || 'Failed to log in. Please check your credentials.');
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-surface p-8 sm:p-12">
+      <h1 className="text-3xl font-bold mb-6 text-center">Sign In</h1>
+      <form onSubmit={handleSubmit}>
+        {formError && <p className="bg-red-900/50 text-red-300 p-3 mb-4 text-center text-sm">{formError}</p>}
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <div className="mb-2">
+          <label htmlFor="password" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        
+        <div className="flex justify-end mb-6">
+          <Link to="/forgot-password" className="text-sm text-secondary hover:text-primary transition-colors">
+            Forgot Password?
+          </Link>
+        </div>
+
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? 'Signing In...' : 'Sign In'}
+        </Button>
+      </form>
+      <p className="text-center text-dark-text mt-6 text-sm">
+        Don't have an account?{' '}
+        <Link to="/register" className="text-secondary hover:text-primary font-medium">
+          Sign Up
+        </Link>
+      </p>
+    </div>
+  );
+};
+
+export default LoginPage;
+
+====================================================================
+>>> FILE: ./src/pages/auth/RegisterPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../../components/ui/Button';
+
+const RegisterPage = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [formError, setFormError] = useState('');
+  const { register, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError('');
+    try {
+      await register(name, email, password);
+      navigate('/account/profile');
+    } catch (error) {
+      setFormError(error.message || 'Failed to register. Please try again.');
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-surface p-8 sm:p-12">
+      <h1 className="text-3xl font-bold mb-6 text-center">Create Account</h1>
+      <form onSubmit={handleSubmit}>
+        {formError && <p className="bg-red-900/50 text-red-300 p-3 mb-4 text-center text-sm">{formError}</p>}
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Full Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="password" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? 'Creating Account...' : 'Create Account'}
+        </Button>
+      </form>
+      <p className="text-center text-dark-text mt-6 text-sm">
+        Already have an account?{' '}
+        <Link to="/login" className="text-secondary hover:text-primary font-medium">
+          Sign In
+        </Link>
+      </p>
+    </div>
+  );
+};
+
+export default RegisterPage;
+
+====================================================================
+>>> FILE: ./src/pages/auth/ForgotPasswordPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../../components/ui/Button';
+
+const ForgotPasswordPage = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const { resetPassword, loading } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    setError('');
+    
+    try {
+      await resetPassword(email);
+      setMessage('Password reset link has been sent to your email.');
+    } catch (err) {
+      setError('Failed to send reset email. ' + err.message);
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-surface p-8 sm:p-12 mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-center">Reset Password</h1>
+      <p className="text-dark-text mb-6 text-center text-sm">
+        Enter your email address and we'll send you a link to reset your password.
+      </p>
+      
+      {message && <p className="bg-green-900/50 text-green-300 p-3 mb-4 text-center text-sm">{message}</p>}
+      {error && <p className="bg-red-900/50 text-red-300 p-3 mb-4 text-center text-sm">{error}</p>}
+      
+      <form onSubmit={handleSubmit}>
+        <div className="mb-6">
+          <label htmlFor="email" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? 'Sending...' : 'Send Reset Link'}
+        </Button>
+      </form>
+      
+      <div className="text-center mt-6">
+        <Link to="/login" className="text-secondary hover:text-primary text-sm font-medium">
+          Back to Login
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default ForgotPasswordPage;
+
+====================================================================
+>>> FILE: ./src/pages/auth/UpdatePasswordPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../../components/ui/Button';
+
+const UpdatePasswordPage = () => {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const { updatePassword, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (password !== confirmPassword) {
+      return setError('Passwords do not match');
+    }
+    
+    if (password.length < 6) {
+      return setError('Password must be at least 6 characters');
+    }
+
+    try {
+      await updatePassword(password);
+      navigate('/account/profile');
+    } catch (err) {
+      setError('Failed to update password. ' + err.message);
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-surface p-8 sm:p-12 mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-center">Set New Password</h1>
+      
+      {error && <p className="bg-red-900/50 text-red-300 p-3 mb-4 text-center text-sm">{error}</p>}
+      
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            New Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2 uppercase tracking-wider">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full px-4 py-3 bg-background border border-gray-700 rounded-none focus:outline-none focus:ring-2 focus:ring-primary"
+            required
+          />
+        </div>
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? 'Updating...' : 'Update Password'}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
+export default UpdatePasswordPage;
+
+====================================================================
+>>> FILE: ./src/pages/account/ProfilePage.jsx
+====================================================================
+import React from 'react';
+
+const ProfilePage = () => {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">My Profile</h1>
+      <p className="text-gray-700">
+        This is where users will manage their account details, view order history, and update their profile information.
+      </p>
+    </div>
+  );
+};
+
+export default ProfilePage;
+
+====================================================================
+>>> FILE: ./src/pages/cart/CartPage.jsx
+====================================================================
+import React from 'react';
+import { useCart } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+import Button from '../../components/ui/Button';
+
+const CartPage = () => {
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
+
+  const totalCost = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="text-center">
+        <h1 className="text-3xl font-serif font-bold text-primary mb-4">Your Cart is Empty</h1>
+        <p className="text-dark-text mb-8">
+          Looks like you haven't added anything to your cart yet.
+        </p>
+        <Link to="/products">
+          <Button>Browse The Collection</Button>
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1 className="text-3xl font-serif font-bold text-primary mb-8">Shopping Cart</h1>
+      <div className="bg-surface border border-gray-800">
+        {cartItems.map((item) => (
+          <div key={item.id} className="flex items-center p-4 border-b border-gray-800 last:border-b-0">
+            <img src={item.imageUrl} alt={item.name} className="w-24 h-24 object-cover" />
+            <div className="flex-grow ml-4">
+              <h2 className="font-serif font-bold text-lg text-primary">{item.name}</h2>
+              <p className="text-secondary">${item.price.toFixed(2)}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <input
+                type="number"
+                value={item.quantity}
+                onChange={(e) => updateQuantity(item.id, parseInt(e.target.value, 10))}
+                min="1"
+                className="w-16 p-2 text-center bg-background border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <button onClick={() => removeFromCart(item.id)} className="text-red-500/70 hover:text-red-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 flex justify-end items-center">
+        <div className="text-right">
+          <p className="text-2xl font-bold text-primary">
+            Total: <span className="text-primary">${totalCost.toFixed(2)}</span>
+          </p>
+          <p className="text-secondary text-sm">Taxes and shipping calculated at checkout.</p>
+          <Button className="mt-4">Proceed to Checkout</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CartPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AdminDashboardPage.jsx
+====================================================================
+import React from 'react';
+
+const StatCard = ({ title, value, icon }) => (
+  <div className="bg-surface p-6 border border-gray-800 flex items-center">
+    <div className="p-3 bg-primary/10 rounded-full text-primary mr-4">
+      {icon}
+    </div>
+    <div>
+      <h3 className="text-secondary font-medium uppercase text-sm tracking-wider">{title}</h3>
+      <p className="text-3xl font-bold text-primary">{value}</p>
+    </div>
+  </div>
+);
+
+const AdminDashboardPage = () => {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard 
+          title="Total Sales" 
+          value="$12,345"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01" />
+            </svg>
+          } 
+        />
+        <StatCard 
+          title="New Orders" 
+          value="64"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          } 
+        />
+        <StatCard 
+          title="Total Products" 
+          value="256"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7h16" />
+            </svg>
+          } 
+        />
+        <StatCard 
+          title="Registered Users" 
+          value="1,280"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.225-1.26-.632-1.742M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" />
+            </svg>
+          } 
+        />
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboardPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/ManageProductsPage.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useProducts } from '../../context/ProductContext';
+import Button from '../../components/ui/Button';
+
+const ManageProductsPage = () => {
+  const { products, deleteProduct, loading, error } = useProducts();
+
+  const handleDelete = async (productId) => {
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      try {
+        await deleteProduct(productId);
+      } catch (err) {
+        console.error("Failed to delete product:", err);
+      }
+    }
+  };
+
+  if (loading) {
+    return <div className="text-xl">Loading products...</div>;
+  }
+
+  if (error) {
+    return <div className="text-xl text-red-500">Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Manage Products</h1>
+        <Link to="/admin/products/new">
+          <Button>Add New Product</Button>
+        </Link>
+      </div>
+
+      <div className="bg-surface border border-gray-800 overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-background text-left text-sm font-semibold uppercase tracking-wider text-secondary">
+              <th className="p-4">ID</th>
+              <th className="p-4">Name</th>
+              <th className="p-4">Price</th>
+              <th className="p-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id} className="border-b border-gray-800 hover:bg-gray-800/50">
+                <td className="p-4 font-medium text-primary">{product.id}</td>
+                <td className="p-4 text-dark-text">{product.name}</td>
+                <td className="p-4 text-dark-text">${product.price.toFixed(2)}</td>
+                <td className="p-4 flex gap-2">
+                  <Link to={`/admin/products/edit/${product.id}`}>
+                    <Button variant="secondary" className="py-1 px-3 text-xs">
+                      Edit
+                    </Button>
+                  </Link>
+                  <Button
+                    onClick={() => handleDelete(product.id)}
+                    className="py-1 px-3 text-xs bg-red-800/50 text-red-300 hover:bg-red-800"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageProductsPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/ManageUsersPage.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useUsers } from '../../context/UserContext';
+import Button from '../../components/ui/Button';
+
+const ManageUsersPage = () => {
+  const { users, deleteUser, loading, error } = useUsers();
+
+  const handleDelete = async (userId) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      try {
+        await deleteUser(userId);
+      } catch (err) {
+        console.error("Failed to delete user:", err);
+      }
+    }
+  };
+
+  if (loading) {
+    return <div className="text-xl">Loading users...</div>;
+  }
+
+  if (error) {
+    return <div className="text-xl text-red-500">Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Manage Users</h1>
+        <Link to="/admin/users/new">
+          <Button>Add New User</Button>
+        </Link>
+      </div>
+
+      <div className="bg-surface border border-gray-800 overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-background text-left text-sm font-semibold uppercase tracking-wider text-secondary">
+              <th className="p-4">Name</th>
+              <th className="p-4">Email</th>
+              <th className="p-4">Role</th>
+              <th className="p-4">Date Joined</th>
+              <th className="p-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id} className="border-b border-gray-800 hover:bg-gray-800/50">
+                <td className="p-4 font-medium text-primary">{user.name}</td>
+                <td className="p-4 text-dark-text">{user.email}</td>
+                <td className="p-4">
+                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                    user.role === 'Admin' ? 'bg-primary text-background' : 'bg-gray-700 text-gray-300'
+                  }`}>
+                    {user.role}
+                  </span>
+                </td>
+                <td className="p-4 text-dark-text">{user.dateJoined}</td>
+                <td className="p-4 flex gap-2">
+                  <Link to={`/admin/users/edit/${user.id}`}>
+                    <Button variant="secondary" className="py-1 px-3 text-xs">
+                      Edit
+                    </Button>
+                  </Link>
+                  <Button
+                    onClick={() => handleDelete(user.id)}
+                    className="py-1 px-3 text-xs bg-red-800/50 text-red-300 hover:bg-red-800"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageUsersPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/ManageOrdersPage.jsx
+====================================================================
+import React from 'react';
+import { useOrders } from '../../context/OrderContext';
+
+const ManageOrdersPage = () => {
+  const { orders, updateOrderStatus, loading, error } = useOrders();
+
+  const handleStatusChange = (orderId, newStatus) => {
+    updateOrderStatus(orderId, newStatus);
+  };
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Pending':
+        return 'bg-yellow-900/50 text-yellow-300';
+      case 'Processing':
+        return 'bg-blue-900/50 text-blue-300';
+      case 'Shipped':
+        return 'bg-indigo-900/50 text-indigo-300';
+      case 'Delivered':
+        return 'bg-green-900/50 text-green-300';
+      default:
+        return 'bg-gray-700 text-gray-300';
+    }
+  };
+  
+  if (loading) {
+    return <div className="text-xl">Loading orders...</div>;
+  }
+
+  if (error) {
+    return <div className="text-xl text-red-500">Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-6">Manage Orders</h1>
+
+      <div className="bg-surface border border-gray-800 overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-background text-left text-sm font-semibold uppercase tracking-wider text-secondary">
+              <th className="p-4">Order ID</th>
+              <th className="p-4">Customer</th>
+              <th className="p-4">Date</th>
+              <th className="p-4">Total</th>
+              <th className="p-4">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id} className="border-b border-gray-800 hover:bg-gray-800/50">
+                <td className="p-4 font-medium text-primary">{order.id}</td>
+                <td className="p-4 text-dark-text">{order.customerName}</td>
+                <td className="p-4 text-dark-text">{order.date}</td>
+                <td className="p-4 text-dark-text">${order.total.toFixed(2)}</td>
+                <td className="p-4">
+                  <select
+                    value={order.status}
+                    onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                    className={`px-2 py-1 text-xs font-semibold rounded-full border-none focus:ring-2 focus:ring-primary ${getStatusColor(order.status)}`}
+                  >
+                    <option value="Pending">Pending</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                  </select>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageOrdersPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AddProductPage.jsx
+====================================================================
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useProducts } from '../../context/ProductContext';
+import ProductForm from '../../components/admin/ProductForm';
+
+const AddProductPage = () => {
+  const { addProduct } = useProducts();
+  const navigate = useNavigate();
+
+  const handleSubmit = (productData) => {
+    addProduct(productData);
+    navigate('/admin/products');
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Add New Product</h1>
+      <ProductForm onSubmit={handleSubmit} />
+    </div>
+  );
+};
+
+export default AddProductPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/EditProductPage.jsx
+====================================================================
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useProducts } from '../../context/ProductContext';
+import ProductForm from '../../components/admin/ProductForm';
+
+const EditProductPage = () => {
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const { getProductById, updateProduct } = useProducts();
+
+  const productToEdit = getProductById(parseInt(productId, 10));
+
+  const handleSubmit = (updatedData) => {
+    updateProduct(parseInt(productId, 10), updatedData);
+    navigate('/admin/products');
+  };
+
+  if (!productToEdit) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold text-dark-text mb-6">Product Not Found</h1>
+        <p>The product you are trying to edit does not exist.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Edit Product</h1>
+      <ProductForm onSubmit={handleSubmit} initialData={productToEdit} />
+    </div>
+  );
+};
+
+export default EditProductPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/ManageBlogPostsPage.jsx
+====================================================================
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useBlog } from '../../context/BlogContext';
+import Button from '../../components/ui/Button';
+
+const ManageBlogPostsPage = () => {
+  const { posts, deletePost, loading, error } = useBlog();
+
+  const handleDelete = async (postId) => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      try {
+        await deletePost(postId);
+      } catch (err) {
+        console.error("Failed to delete post:", err);
+      }
+    }
+  };
+
+  if (loading) {
+    return <div className="text-xl">Loading posts...</div>;
+  }
+
+  if (error) {
+    return <div className="text-xl text-red-500">Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Manage Blog Posts</h1>
+        <Link to="/admin/blog/new">
+          <Button>Add New Post</Button>
+        </Link>
+      </div>
+
+      <div className="bg-surface border border-gray-800 overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-background text-left text-sm font-semibold uppercase tracking-wider text-secondary">
+              <th className="p-4">Title</th>
+              <th className="p-4">Category</th>
+              <th className="p-4">Author</th>
+              <th className="p-4">Date</th>
+              <th className="p-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post) => (
+              <tr key={post.id} className="border-b border-gray-800 hover:bg-gray-800/50">
+                <td className="p-4 font-medium text-primary">{post.title}</td>
+                <td className="p-4 text-dark-text">{post.category}</td>
+                <td className="p-4 text-dark-text">{post.author}</td>
+                <td className="p-4 text-dark-text">{post.date}</td>
+                <td className="p-4 flex gap-2">
+                  <Link to={`/admin/blog/edit/${post.id}`}>
+                    <Button variant="secondary" className="py-1 px-3 text-xs">
+                      Edit
+                    </Button>
+
+                  </Link>
+                  <Button
+                    onClick={() => handleDelete(post.id)}
+                    className="py-1 px-3 text-xs bg-red-800/50 text-red-300 hover:bg-red-800"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageBlogPostsPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AddBlogPostPage.jsx
+====================================================================
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useBlog } from '../../context/BlogContext';
+import BlogPostForm from '../../components/admin/BlogPostForm';
+
+const AddBlogPostPage = () => {
+  const { addPost } = useBlog();
+  const navigate = useNavigate();
+
+  const handleSubmit = (postData) => {
+    addPost(postData);
+    navigate('/admin/blog');
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Add New Blog Post</h1>
+      <BlogPostForm onSubmit={handleSubmit} />
+    </div>
+  );
+};
+
+export default AddBlogPostPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/EditBlogPostPage.jsx
+====================================================================
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useBlog } from '../../context/BlogContext';
+import BlogPostForm from '../../components/admin/BlogPostForm';
+
+const EditBlogPostPage = () => {
+  const { postId } = useParams();
+  const navigate = useNavigate();
+  const { getPostById, updatePost } = useBlog();
+
+  const postToEdit = getPostById(parseInt(postId, 10));
+
+  const handleSubmit = (updatedData) => {
+    updatePost(parseInt(postId, 10), updatedData);
+    navigate('/admin/blog');
+  };
+
+  if (!postToEdit) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold text-dark-text mb-6">Post Not Found</h1>
+        <p>The post you are trying to edit does not exist.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Edit Blog Post</h1>
+      <BlogPostForm onSubmit={handleSubmit} initialData={postToEdit} />
+    </div>
+  );
+};
+
+export default EditBlogPostPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AddUserPage.jsx
+====================================================================
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUsers } from '../../context/UserContext';
+import UserForm from '../../components/admin/UserForm';
+
+const AddUserPage = () => {
+  const { addUser } = useUsers();
+  const navigate = useNavigate();
+
+  const handleSubmit = (userData) => {
+    addUser(userData);
+    navigate('/admin/users');
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Add New User</h1>
+      <UserForm onSubmit={handleSubmit} />
+    </div>
+  );
+};
+
+export default AddUserPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/EditUserPage.jsx
+====================================================================
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useUsers } from '../../context/UserContext';
+import UserForm from '../../components/admin/UserForm';
+
+const EditUserPage = () => {
+  const { userId } = useParams();
+  const navigate = useNavigate();
+  const { getUserById, updateUser } = useUsers();
+
+  const userToEdit = getUserById(parseInt(userId, 10));
+
+  const handleSubmit = (updatedData) => {
+    updateUser(parseInt(userId, 10), updatedData);
+    navigate('/admin/users');
+  };
+
+  if (!userToEdit) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold text-dark-text mb-6">User Not Found</h1>
+        <p>The user you are trying to edit does not exist.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-dark-text mb-6">Edit User</h1>
+      <UserForm onSubmit={handleSubmit} initialData={userToEdit} />
+    </div>
+  );
+};
+
+export default EditUserPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AdminLoginPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Button from '../../components/ui/Button';
+
+const AdminLoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [formError, setFormError] = useState('');
+  const { login, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError('');
+    try {
+      const user = await login(email, password);
+      if (user?.user_metadata?.role === 'Admin') {
+        navigate('/admin');
+      } else {
+        setFormError('Access Denied: You do not have administrator privileges.');
+      }
+    } catch (error) {
+      setFormError(error.message || 'Login failed.');
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="w-full max-w-md bg-surface border border-gray-800 p-8 shadow-2xl">
+        <div className="text-center mb-8">
+          <h2 className="text-primary font-serif text-2xl font-bold uppercase tracking-widest">Admin Portal</h2>
+          <p className="text-secondary text-sm mt-2">Boreland Global Fashions</p>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          {formError && <div className="bg-red-900/30 border border-red-800 text-red-200 p-3 mb-4 text-sm text-center">{formError}</div>}
+          
+          <div className="mb-4">
+            <label className="block text-secondary text-xs uppercase tracking-wider mb-2">Email</label>
+            <input 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-background border border-gray-700 text-primary px-4 py-3 focus:border-primary outline-none transition-colors"
+              required
+            />
+          </div>
+          
+          <div className="mb-8">
+            <label className="block text-secondary text-xs uppercase tracking-wider mb-2">Password</label>
+            <input 
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-background border border-gray-700 text-primary px-4 py-3 focus:border-primary outline-none transition-colors"
+              required
+            />
+          </div>
+
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? 'Authenticating...' : 'Enter Dashboard'}
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AdminLoginPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/ManageCouponsPage.jsx
+====================================================================
+import React, { useEffect, useState } from 'react';
+import apiService from '../../api/apiService';
+import Button from '../../components/ui/Button';
+
+const ManageCouponsPage = () => {
+  const [coupons, setCoupons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({ code: '', discountType: 'percentage', value: '', expirationDate: '', usageLimit: '' });
+
+  useEffect(() => {
+    loadCoupons();
+  }, []);
+
+  const loadCoupons = async () => {
+    try {
+      const data = await apiService.getCoupons();
+      setCoupons(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if(window.confirm('Delete this coupon?')) {
+      await apiService.deleteCoupon(id);
+      loadCoupons();
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await apiService.createCoupon(formData);
+      setFormData({ code: '', discountType: 'percentage', value: '', expirationDate: '', usageLimit: '' });
+      loadCoupons();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-8">Manage Coupons & Offers</h1>
+
+      {/* Add Coupon Form */}
+      <div className="bg-surface p-6 border border-gray-800 mb-8">
+        <h3 className="text-xl font-bold text-secondary mb-4">Create New Coupon</h3>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+          <div>
+            <label className="block text-xs uppercase tracking-wider mb-1 text-secondary">Code</label>
+            <input type="text" placeholder="SUMMER20" className="w-full p-2 bg-background border border-gray-700" value={formData.code} onChange={e => setFormData({...formData, code: e.target.value.toUpperCase()})} required />
+          </div>
+          <div>
+            <label className="block text-xs uppercase tracking-wider mb-1 text-secondary">Type</label>
+            <select className="w-full p-2 bg-background border border-gray-700" value={formData.discountType} onChange={e => setFormData({...formData, discountType: e.target.value})}>
+              <option value="percentage">Percentage (%)</option>
+              <option value="fixed">Fixed Amount ($)</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-xs uppercase tracking-wider mb-1 text-secondary">Value</label>
+            <input type="number" placeholder="20" className="w-full p-2 bg-background border border-gray-700" value={formData.value} onChange={e => setFormData({...formData, value: e.target.value})} required />
+          </div>
+          <div>
+            <label className="block text-xs uppercase tracking-wider mb-1 text-secondary">Expires</label>
+            <input type="date" className="w-full p-2 bg-background border border-gray-700" value={formData.expirationDate} onChange={e => setFormData({...formData, expirationDate: e.target.value})} />
+          </div>
+          <Button type="submit" className="h-[42px]">Add Coupon</Button>
+        </form>
+      </div>
+
+      {/* List */}
+      <div className="bg-surface border border-gray-800 overflow-x-auto">
+        <table className="w-full text-left">
+          <thead className="bg-background text-secondary text-xs uppercase tracking-wider">
+            <tr>
+              <th className="p-4">Code</th>
+              <th className="p-4">Discount</th>
+              <th className="p-4">Expires</th>
+              <th className="p-4">Used</th>
+              <th className="p-4">Action</th>
+            </tr>
+          </thead>
+          <tbody className="text-sm">
+            {loading ? <tr><td className="p-4">Loading...</td></tr> : coupons.map(c => (
+              <tr key={c.id} className="border-b border-gray-800 hover:bg-gray-800/50">
+                <td className="p-4 font-bold text-primary">{c.code}</td>
+                <td className="p-4">{c.discountType === 'percentage' ? `${c.value}%` : `$${c.value}`}</td>
+                <td className="p-4">{c.expirationDate || 'Never'}</td>
+                <td className="p-4">{c.usageCount} / {c.usageLimit || '∞'}</td>
+                <td className="p-4">
+                  <button onClick={() => handleDelete(c.id)} className="text-red-400 hover:text-red-300">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageCouponsPage;
+
+====================================================================
+>>> FILE: ./src/pages/admin/AdminSettingsPage.jsx
+====================================================================
+import React, { useState } from 'react';
+import { useSettings } from '../../context/SettingsContext';
+
+const AdminSettingsPage = () => {
+  const { settings, uploadLogo, updateSiteName } = useSettings();
+  const [siteName, setSiteName] = useState(settings.site_name);
+  const [uploading, setUploading] = useState(false);
+  const [message, setMessage] = useState({ type: '', text: '' });
+
+  const handleLogoUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      setMessage({ type: 'error', text: 'Please select a valid image file' });
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setMessage({ type: 'error', text: 'File size must be less than 5MB' });
+      return;
+    }
+
+    setUploading(true);
+    setMessage({ type: '', text: '' });
+
+    const result = await uploadLogo(file);
+
+    setUploading(false);
+    if (result.success) {
+      setMessage({ type: 'success', text: 'Logo updated successfully!' });
+    } else {
+      setMessage({ type: 'error', text: result.error || 'Failed to update logo' });
+    }
+
+    e.target.value = '';
+  };
+
+  const handleSiteNameUpdate = async (e) => {
+    e.preventDefault();
+    setMessage({ type: '', text: '' });
+
+    const result = await updateSiteName(siteName);
+    if (result.success) {
+      setMessage({ type: 'success', text: 'Site name updated successfully!' });
+    } else {
+      setMessage({ type: 'error', text: result.error || 'Failed to update site name' });
+    }
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-6 text-primary">Site Settings</h1>
+
+      {message.text && (
+        <div
+          className={`mb-6 p-4 rounded ${
+            message.type === 'success'
+              ? 'bg-green-900/30 border border-green-700 text-green-400'
+              : 'bg-red-900/30 border border-red-700 text-red-400'
+          }`}
+        >
+          {message.text}
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Logo Settings */}
+        <div className="bg-surface p-6 border border-gray-800 rounded">
+          <h2 className="text-xl font-semibold mb-4 text-primary">Logo Settings</h2>
+
+          <div className="mb-6">
+            <div className="bg-background p-4 rounded border border-gray-700 mb-4">
+              <p className="text-sm text-secondary mb-2">Current Logo:</p>
+              <img
+                src={settings.logo_url}
+                alt="Current Logo"
+                className="h-20 object-contain bg-white rounded p-2"
+              />
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-secondary mb-2">
+                  Upload New Logo
+                </label>
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleLogoUpload}
+                    disabled={uploading}
+                    className="block w-full text-sm text-secondary
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-primary file:text-background
+                      hover:file:bg-primary/80
+                      disabled:opacity-50"
+                  />
+                </div>
+                {uploading && (
+                  <p className="text-sm text-secondary mt-2">Uploading...</p>
+                )}
+              </div>
+
+              <div className="text-sm text-secondary">
+                <p className="font-medium mb-1">Recommendations:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>PNG or SVG format for best quality</li>
+                  <li>Maximum size: 5MB</li>
+                  <li>Recommended dimensions: 200x50px</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Site Information */}
+        <div className="bg-surface p-6 border border-gray-800 rounded">
+          <h2 className="text-xl font-semibold mb-4 text-primary">Site Information</h2>
+
+          <form onSubmit={handleSiteNameUpdate} className="space-y-4">
+            <div>
+              <label htmlFor="siteName" className="block text-sm font-medium text-secondary mb-2">
+                Site Name
+              </label>
+              <input
+                type="text"
+                id="siteName"
+                value={siteName}
+                onChange={(e) => setSiteName(e.target.value)}
+                className="w-full px-4 py-2 bg-background border border-gray-700 rounded text-primary focus:outline-none focus:border-primary"
+                placeholder="Enter site name"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-primary text-background font-semibold rounded hover:bg-primary/80 transition-colors"
+            >
+              Update Site Name
+            </button>
+          </form>
+
+          <div className="mt-6 pt-6 border-t border-gray-700">
+            <h3 className="text-sm font-medium text-secondary mb-3">Additional Settings</h3>
+            <p className="text-sm text-secondary">
+              More site configuration options will be available here in future updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminSettingsPage;
+
+====================================================================
+>>> FILE: ./src/pages/ComingSoonPage.jsx
+====================================================================
+import React from 'react';
+import CountdownTimer from '../components/common/CountdownTimer';
+
+const ComingSoonPage = () => {
+  const launchDate = '2026-01-01T00:00:00';
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-center p-4">
+      <div className="max-w-3xl">
+        <img src="/logo.png" alt="Boreland Logo" className="h-20 w-auto mx-auto mb-4" />
+        
+        <h2 className="font-serif text-2xl text-primary mb-2">
+          Boreland Global Fashions
+        </h2>
+        <p className="text-lg text-secondary italic mb-12">
+          Dress smart. Lead bold.
+        </p>
+
+        <h1 className="text-4xl md:text-6xl font-serif text-primary uppercase tracking-wider mb-4">
+          Coming Soon
+        </h1>
+        
+        <p className="text-lg md:text-xl text-dark-text mb-12 max-w-2xl mx-auto">
+          We are currently crafting a new online experience. Our full website will launch on January 1st, 2026.
+        </p>
+
+        <CountdownTimer targetDate={launchDate} />
+
+        <div className="mt-16">
+          <p className="text-secondary">Stay connected with us for updates.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ComingSoonPage;
+
+====================================================================
+>>> FILE: ./src/pages/ProductDetailPage.jsx
+====================================================================
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useProducts } from '../context/ProductContext';
+import { useCart } from '../context/CartContext';
+import Button from '../components/ui/Button';
+import StarRating from '../components/products/StarRating';
+
+const ProductDetailPage = () => {
+  const { productId } = useParams();
+  const { getProductById } = useProducts();
+  const { addToCart } = useCart();
+  
+  const product = getProductById(parseInt(productId, 10));
+
+  const [quantity, setQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState(product?.variants?.colors?.[0] || null);
+  const [selectedSize, setSelectedSize] = useState(product?.variants?.sizes?.[0] || null);
+  
+  useEffect(() => {
+    // Reset selections if product changes
+    setSelectedColor(product?.variants?.colors?.[0] || null);
+    setSelectedSize(product?.variants?.sizes?.[0] || null);
+    setQuantity(1);
+  }, [productId, product]);
+
+  if (!product) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-3xl font-serif font-bold text-primary mb-4">Product Not Found</h1>
+        <p className="text-dark-text mb-8">Sorry, we couldn't find the product you're looking for.</p>
+        <Link to="/products"><Button variant="secondary">Back to Collection</Button></Link>
+      </div>
+    );
+  }
+
+  const handleQuantityChange = (amount) => {
+    setQuantity((prev) => Math.max(1, prev + amount));
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    // Future enhancement: show a toast notification
+  };
+
+  return (
+    <div className="pb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
+        <div className="bg-surface p-4"><img src={product.imageUrl} alt={product.name} className="w-full h-auto object-cover" /></div>
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-serif font-bold text-primary mb-2">{product.name}</h1>
+          <div className="flex items-center gap-4 mb-4">
+            <StarRating rating={product.rating.average} />
+            <span className="text-sm text-secondary">({product.rating.count} reviews)</span>
+          </div>
+          <p className="text-3xl font-serif text-secondary mb-6">${product.price.toFixed(2)}</p>
+          <p className="text-dark-text leading-relaxed mb-8">{product.description}</p>
+          
+          {product.variants.colors?.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary mb-3">Color: <span className="text-primary">{selectedColor}</span></h3>
+              <div className="flex flex-wrap gap-2">{product.variants.colors.map(color => (
+                <button key={color} onClick={() => setSelectedColor(color)} className={`py-1 px-4 border text-sm transition-colors ${selectedColor === color ? 'border-primary text-primary' : 'border-gray-700 text-secondary hover:border-secondary'}`}>{color}</button>
+              ))}</div>
+            </div>
+          )}
+          
+          {product.variants.sizes?.length > 0 && (
+            <div className="mb-8">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary mb-3">Size: <span className="text-primary">{selectedSize}</span></h3>
+              <div className="flex flex-wrap gap-2">{product.variants.sizes.map(size => (
+                <button key={size} onClick={() => setSelectedSize(size)} className={`py-1 px-4 border text-sm transition-colors ${selectedSize === size ? 'border-primary text-primary' : 'border-gray-700 text-secondary hover:border-secondary'}`}>{size}</button>
+              ))}</div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        {product.specifications?.length > 0 && (
+          <details className="group bg-surface border border-gray-800 p-4">
+            <summary className="flex cursor-pointer list-none items-center justify-between font-serif text-lg text-primary">Specifications<span className="text-secondary transition-transform duration-300 group-open:rotate-180">▼</span></summary>
+            <ul className="mt-4 text-dark-text list-disc pl-5 space-y-2">
+              {product.specifications.map(spec => <li key={spec.name}><strong>{spec.name}:</strong> {spec.value}</li>)}
+            </ul>
+          </details>
+        )}
+        <details className="group bg-surface border border-gray-800 p-4">
+          <summary className="flex cursor-pointer list-none items-center justify-between font-serif text-lg text-primary">Reviews ({product.rating.count})<span className="text-secondary transition-transform duration-300 group-open:rotate-180">▼</span></summary>
+          <div className="mt-4 space-y-6">
+            {product.reviews?.length > 0 ? product.reviews.map(review => (
+              <div key={review.id} className="border-b border-gray-800 pb-4 last:border-b-0 last:pb-0">
+                <div className="flex justify-between items-center mb-1">
+                  <p className="font-semibold text-primary">{review.author}</p>
+                  <StarRating rating={review.rating} />
+                </div>
+                <p className="text-xs text-gray-500 mb-2">{review.date}</p>
+                <p className="text-dark-text">{review.comment}</p>
+              </div>
+            )) : <p className="text-dark-text">No reviews yet. Be the first to share your thoughts!</p>}
+          </div>
+        </details>
+      </div>
+
+      <div className="fixed bottom-0 left-0 w-full bg-background/80 backdrop-blur-sm border-t border-surface z-40">
+        <div className="max-w-7xl mx-auto p-4 flex flex-col sm:flex-row justify-end items-center gap-4">
+          <div className="flex items-center gap-2 bg-surface border border-gray-700 p-1">
+            <button onClick={() => handleQuantityChange(-1)} className="flex items-center justify-center w-12 h-12 text-secondary text-2xl font-light hover:text-primary">-</button>
+            <span className="font-medium text-primary w-12 text-center text-lg">{quantity}</span>
+            <button onClick={() => handleQuantityChange(1)} className="flex items-center justify-center w-12 h-12 text-secondary text-2xl font-light hover:text-primary">+</button>
+          </div>
+          <Button onClick={handleAddToCart} className="w-full sm:w-auto flex-grow sm:flex-grow-0">Add {quantity} to Cart</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetailPage;
+
+====================================================================
+>>> FILE: ./src/data/products.js
+====================================================================
+export const products = [
+  // Men's Wear
+  {
+    id: 1,
+    name: 'The Sovereign Suit',
+    description: 'A meticulously tailored wool-blend suit, designed for the modern executive. Features a classic fit.',
+    price: 899.99,
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Sovereign+Suit',
+    category: "Men's Wear",
+    rating: { average: 4.9, count: 120 },
+    variants: {
+      colors: ['Charcoal', 'Navy', 'Black'],
+      sizes: ['38R', '40R', '40L', '42R', '42L'],
+    },
+    specifications: [
+      { name: 'Material', value: '90% Wool, 10% Polyester' },
+      { name: 'Fit', value: 'Classic Regular' },
+      { name: 'Care', value: 'Dry Clean Only' },
+    ],
+    reviews: [
+      { id: 1, author: 'James B.', rating: 5, date: '2 weeks ago', comment: 'Impeccable quality and a perfect fit right out of the box. Worth every penny.' },
+      { id: 2, author: 'Robert K.', rating: 5, date: '1 month ago', comment: 'This is my new go-to suit for important meetings. Exudes confidence.' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Executive Blazer',
+    description: 'A versatile single-breasted blazer crafted from Italian wool. A timeless addition to any wardrobe.',
+    price: 450.00,
+    imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Executive+Blazer',
+    category: "Men's Wear",
+    rating: { average: 4.8, count: 95 },
+    variants: { colors: ['Heather Grey', 'Blue'], sizes: ['S', 'M', 'L', 'XL'] },
+    specifications: [{ name: 'Material', value: '100% Italian Wool' }, { name: 'Pockets', value: 'Two flap pockets, one chest pocket' }],
+    reviews: [],
+  },
+  {
+    id: 3,
+    name: 'Prestige Dress Shirt',
+    description: 'A classic long-sleeve dress shirt crafted from premium Egyptian cotton for exceptional comfort.',
+    price: 150.00,
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Prestige+Shirt',
+    category: "Men's Wear",
+    rating: { average: 4.9, count: 210 },
+    variants: { colors: ['White', 'Light Blue'], sizes: ['15.5', '16', '16.5', '17'] },
+    specifications: [{ name: 'Material', value: '100% Egyptian Cotton' }, { name: 'Cuff Style', value: 'Button' }],
+    reviews: [{ id: 1, author: 'Michael T.', rating: 5, date: '3 days ago', comment: 'The fabric is incredibly soft and breathable. Best dress shirt I own.' }],
+  },
+  // Women's Wear
+  {
+    id: 4,
+    name: 'The CEO Blazer',
+    description: 'A powerful, structured blazer with a modern silhouette, designed for the female leader.',
+    price: 475.00,
+    imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=CEO+Blazer',
+    category: "Women's Wear",
+    rating: { average: 4.9, count: 88 },
+    variants: { colors: ['Black', 'Ivory'], sizes: ['2', '4', '6', '8', '10'] },
+    specifications: [{ name: 'Material', value: 'Crepe Blend' }, { name: 'Lining', value: '100% Silk' }],
+    reviews: [{ id: 1, author: 'Sarah J.', rating: 5, date: '1 month ago', comment: 'A true power piece. The fit is impeccable and it instantly elevates any outfit.' }],
+  },
+  {
+    id: 5,
+    name: 'Corporate Sheath Dress',
+    description: 'An elegant and professional business formal dress, tailored to create a flattering silhouette.',
+    price: 350.00,
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Sheath+Dress',
+    category: "Women's Wear",
+    rating: { average: 4.7, count: 65 },
+    variants: { colors: ['Red', 'Navy'], sizes: ['4', '6', '8'] },
+    specifications: [{ name: 'Material', value: 'Stretch-Ponte' }, { name: 'Length', value: 'Knee-Length' }],
+    reviews: [],
+  },
+  // ... (Other products will use this structure but might have empty review arrays etc.)
+  {
+    id: 6, name: 'Tailored Trousers', price: 220.00, category: "Women's Wear", imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Tailored+Trousers', description: 'High-waisted, wide-leg trousers that combine comfort with a sharp, professional look.', rating: { average: 4.6, count: 112 }, variants: { colors: ['Black', 'Beige'], sizes: ['2', '4', '6', '8', '10'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 7, name: 'Classic Leather Oxfords', price: 450.00, category: "Men's Shoes", imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Leather+Oxfords', description: 'Hand-burnished calfskin leather Oxfords, the cornerstone of any gentleman\'s wardrobe.', rating: { average: 5.0, count: 150 }, variants: { colors: ['Cognac', 'Black'], sizes: ['9', '10', '10.5', '11', '12'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 8, name: 'Suede Loafers', price: 320.50, category: "Men's Shoes", imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Suede+Loafers', description: 'Luxurious suede loafers offering a perfect blend of comfort and casual elegance.', rating: { average: 4.8, count: 89 }, variants: { colors: ['Brown', 'Navy'], sizes: ['9', '10', '11'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 9, name: 'Signature Pumps', price: 380.00, category: "Women's Shoes", imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Signature+Pumps', description: 'Classic pointed-toe heels in Nappa leather, designed for all-day comfort and timeless style.', rating: { average: 4.9, count: 201 }, variants: { colors: ['Black', 'Nude'], sizes: ['6', '7', '8', '9'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 10, name: 'Leather Ballet Flats', price: 250.00, category: "Women's Shoes", imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Ballet+Flats', description: 'Sophisticated yet comfortable ballet flats, handcrafted from supple Italian leather.', rating: { average: 4.7, count: 130 }, variants: { colors: ['Black', 'Saddle'], sizes: ['6', '7', '8', '9'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 11, name: 'The Ambassador\'s Silk Tie', price: 85.00, category: 'Accessories', imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Silk+Tie', description: 'A luxurious 100% silk tie featuring a subtle geometric pattern. The perfect finishing touch.', rating: { average: 4.9, count: 300 }, variants: { colors: ['Blue Stripe', 'Red Paisley'], sizes: ['Standard'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 12, name: 'Emblem Cufflinks', price: 120.00, category: 'Accessories', imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Emblem+Cufflinks', description: 'Polished silver cufflinks engraved with the Boreland emblem. A subtle statement of class.', rating: { average: 5.0, count: 98 }, variants: { colors: ['Silver'], sizes: ['One Size'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 13, name: 'Elysian Fields Eau de Parfum', price: 180.00, category: "Perfumes", imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Elysian+Fields', description: 'A sophisticated fragrance with notes of bergamot, sandalwood, and white musk.', rating: { average: 4.9, count: 450 }, variants: { colors: [], sizes: ['50ml', '100ml'] }, specifications: [], reviews: [],
+  },
+  {
+    id: 14, name: 'Midnight Noir Parfum', price: 220.00, category: "Perfumes", imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Midnight+Noir', description: 'A bold and mysterious scent featuring black orchid, incense, and dark spices.', rating: { average: 4.8, count: 325 }, variants: { colors: [], sizes: ['50ml', '100ml'] }, specifications: [], reviews: [],
+  },
+];
+
+====================================================================
+>>> FILE: ./src/data/blogPosts.js
+====================================================================
+export const blogPosts = [
+  {
+    id: 1,
+    title: 'The Art of Power Dressing: A 2024 Guide',
+    category: 'Style Guide',
+    author: 'Eleanor Vance',
+    date: 'October 26, 2023',
+    readTime: '6 min read',
+    excerpt: 'Discover how to command respect and exude confidence through strategic wardrobe choices in the modern workplace.',
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Power+Dressing',
+  },
+  {
+    id: 2,
+    title: 'Behind the Seams: The Craftsmanship of a Boreland Suit',
+    category: 'Craftsmanship',
+    author: 'Julian Croft',
+    date: 'October 15, 2023',
+    readTime: '8 min read',
+    excerpt: 'A deep dive into the meticulous process, premium materials, and skilled artisans behind our signature suits.',
+    imageUrl: 'https://placehold.co/600x400/A9A9A9/1A1A1A?text=Behind+the+Seams',
+  },
+  {
+    id: 3,
+    title: 'Accessorizing for Success: The Timeless Appeal of a Good Watch',
+    category: 'Lifestyle',
+    author: 'Victoria Sterling',
+    date: 'September 30, 2023',
+    readTime: '7 min read',
+    excerpt: 'Learn how a classic timepiece can elevate your professional image and serve as a statement of intent.',
+    imageUrl: 'https://placehold.co/600x400/242424/EAEAEA?text=Accessorizing',
+  },
+];
+
+====================================================================
+>>> FILE: ./src/data/users.js
+====================================================================
+export const users = [
+  {
+    id: 1,
+    name: 'Admin User',
+    email: 'admin@example.com',
+    role: 'Admin',
+    dateJoined: '2023-01-15',
+  },
+  {
+    id: 2,
+    name: 'Alice Johnson',
+    email: 'alice.j@example.com',
+    role: 'Customer',
+    dateJoined: '2023-03-22',
+  },
+  {
+    id: 3,
+    name: 'Bob Williams',
+    email: 'bob.w@example.com',
+    role: 'Customer',
+    dateJoined: '2023-05-10',
+  },
+  {
+    id: 4,
+    name: 'Charlie Brown',
+    email: 'charlie.b@example.com',
+    role: 'Customer',
+    dateJoined: '2023-08-01',
+  },
+];
+
+====================================================================
+>>> FILE: ./src/data/orders.js
+====================================================================
+export const orders = [
+  {
+    id: 'ORD-101',
+    customerName: 'Alice Johnson',
+    date: '2023-10-28',
+    total: 1250.00,
+    status: 'Processing',
+    items: [
+      { productId: 2, name: 'Cloud Data Platform', quantity: 1 },
+    ]
+  },
+  {
+    id: 'ORD-102',
+    customerName: 'Bob Williams',
+    date: '2023-10-25',
+    total: 1499.98,
+    status: 'Shipped',
+    items: [
+      { productId: 1, name: 'Enterprise CRM Suite', quantity: 2 },
+    ]
+  },
+  {
+    id: 'ORD-103',
+    customerName: 'Charlie Brown',
+    date: '2023-10-22',
+    total: 999.00,
+    status: 'Delivered',
+    items: [
+      { productId: 4, name: 'Cybersecurity Shield', quantity: 1 },
+    ]
+  },
+  {
+    id: 'ORD-104',
+    customerName: 'Alice Johnson',
+    date: '2023-10-20',
+    total: 750.50,
+    status: 'Delivered',
+    items: [
+      { productId: 3, name: 'Automated Marketing Hub', quantity: 1 },
+    ]
+  },
+  {
+    id: 'ORD-105',
+    customerName: 'David Miller',
+    date: '2023-11-01',
+    total: 850.00,
+    status: 'Pending',
+    items: [
+      { productId: 5, name: 'Logistics & SCM Software', quantity: 1 },
+    ]
+  },
+];
+
+====================================================================
+>>> FILE: ./src/context/CartContext.jsx
+====================================================================
+import React, { createContext, useContext, useState } from 'react';
+
+const CartContext = createContext();
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (product, quantityToAdd = 1) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === product.id);
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + quantityToAdd } : item
+        );
+      }
+      return [...prevItems, { ...product, quantity: quantityToAdd }];
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
+  };
+
+  const updateQuantity = (productId, newQuantity) => {
+    setCartItems((prevItems) => {
+      if (newQuantity <= 0) {
+        return prevItems.filter((item) => item.id !== productId);
+      }
+      return prevItems.map((item) =>
+        item.id === productId ? { ...item, quantity: newQuantity } : item
+      );
+    });
+  };
+
+  const value = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+  };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/AuthContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+
+const AuthContext = createContext();
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Helper to format Supabase user object to match our app's expectation
+  const formatAndSetUser = (user) => {
+    setCurrentUser({
+      id: user.id,
+      email: user.email,
+      name: user.user_metadata?.full_name || user.email.split('@')[0],
+      role: user.user_metadata?.role || 'Customer',
+    });
+  };
+
+  useEffect(() => {
+    // 1. Check for active session on load
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        formatAndSetUser(session.user);
+      }
+      setLoading(false);
+    };
+
+    getSession();
+
+    // 2. Listen for auth changes (sign in, sign out, password recovery, etc.)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        // Handle password recovery event if needed specifically, 
+        // usually session is established automatically
+      }
+      
+      if (session?.user) {
+        formatAndSetUser(session.user);
+      } else {
+        setCurrentUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const login = async (email, password) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+      return data.user;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const register = async (name, email, password) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+            role: 'Customer',
+          },
+        },
+      });
+
+      if (error) throw error;
+      return data.user;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const logout = async () => {
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (err) {
+      console.error("Logout failed:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Send Password Reset Email
+  const resetPassword = async (email) => {
+    try {
+      setLoading(true);
+      setError(null);
+      // redirectTo points to where the user goes after clicking the email link
+      // We will point them to the profile page or a dedicated update-password page
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/account/update-password',
+      });
+      if (error) throw error;
+      return true;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Update Password (used after clicking reset link and logging in)
+  const updatePassword = async (newPassword) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { error } = await supabase.auth.updateUser({ password: newPassword });
+      if (error) throw error;
+      return true;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const isAuthenticated = !!currentUser;
+
+  const value = {
+    currentUser,
+    isAuthenticated,
+    loading,
+    error,
+    login,
+    register,
+    logout,
+    resetPassword,
+    updatePassword,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/ProductContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiService from '../api/apiService';
+
+const ProductContext = createContext();
+
+export const useProducts = () => {
+  return useContext(ProductContext);
+};
+
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const data = await apiService.getProducts();
+        setProducts(data);
+        setError(null);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch products');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  const addProduct = async (productData) => {
+    const newProduct = await apiService.createProduct(productData);
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+  };
+
+  const updateProduct = async (productId, updatedData) => {
+    const updatedProduct = await apiService.updateProduct(productId, updatedData);
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === productId ? updatedProduct : product
+      )
+    );
+  };
+
+  const deleteProduct = async (productId) => {
+    await apiService.deleteProduct(productId);
+    setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== productId)
+    );
+  };
+
+  const getProductById = (productId) => {
+    return products.find(p => p.id === productId);
+  };
+
+  const value = {
+    products,
+    loading,
+    error,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    getProductById,
+  };
+
+  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/BlogContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiService from '../api/apiService';
+
+const BlogContext = createContext();
+
+export const useBlog = () => {
+  return useContext(BlogContext);
+};
+
+export const BlogProvider = ({ children }) => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const data = await apiService.getBlogPosts();
+        setPosts(data);
+        setError(null);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch blog posts');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  const addPost = async (postData) => {
+    const newPost = await apiService.createBlogPost(postData);
+    setPosts((prevPosts) => [newPost, ...prevPosts]);
+  };
+
+  const updatePost = async (postId, updatedData) => {
+    const updatedPost = await apiService.updateBlogPost(postId, updatedData);
+    setPosts((prevPosts) =>
+      prevPosts.map((post) => (post.id === postId ? updatedPost : post))
+    );
+  };
+
+  const deletePost = async (postId) => {
+    await apiService.deleteBlogPost(postId);
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
+  };
+
+  const getPostById = (postId) => {
+    return posts.find(p => p.id === postId);
+  };
+
+  const value = {
+    posts,
+    loading,
+    error,
+    addPost,
+    updatePost,
+    deletePost,
+    getPostById,
+  };
+
+  return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/UserContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiService from '../api/apiService';
+
+const UserContext = createContext();
+
+export const useUsers = () => {
+  return useContext(UserContext);
+};
+
+export const UserProvider = ({ children }) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        const data = await apiService.getUsers();
+        setUsers(data);
+        setError(null);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch users');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  const addUser = async (userData) => {
+    const newUser = await apiService.createUser(userData);
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+  };
+
+  const updateUser = async (userId, updatedData) => {
+    const updatedUser = await apiService.updateUser(userId, updatedData);
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+    );
+  };
+
+  const deleteUser = async (userId) => {
+    await apiService.deleteUser(userId);
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+  };
+
+  const getUserById = (userId) => {
+    return users.find(u => u.id === userId);
+  };
+
+  const value = {
+    users,
+    loading,
+    error,
+    addUser,
+    updateUser,
+    deleteUser,
+    getUserById,
+  };
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/OrderContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiService from '../api/apiService';
+
+const OrderContext = createContext();
+
+export const useOrders = () => {
+  return useContext(OrderContext);
+};
+
+export const OrderProvider = ({ children }) => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        setLoading(true);
+        const data = await apiService.getOrders();
+        setOrders(data);
+        setError(null);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch orders');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchOrders();
+  }, []);
+
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try {
+      const updatedOrder = await apiService.updateOrderStatus(orderId, newStatus);
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === orderId ? updatedOrder : order
+        )
+      );
+    } catch (err) {
+      console.error("Failed to update order status:", err);
+      // In a real app, you might set an error state here
+    }
+  };
+
+  const value = {
+    orders,
+    loading,
+    error,
+    updateOrderStatus,
+  };
+
+  return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>;
+};
+
+====================================================================
+>>> FILE: ./src/context/SettingsContext.jsx
+====================================================================
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+
+const SettingsContext = createContext();
+
+export const useSettings = () => {
+  const context = useContext(SettingsContext);
+  if (!context) {
+    throw new Error('useSettings must be used within a SettingsProvider');
+  }
+  return context;
+};
+
+export const SettingsProvider = ({ children }) => {
+  const [settings, setSettings] = useState({
+    logo_url: '/logo.png',
+    site_name: 'Boreland Fashions',
+    loading: true,
+  });
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('site_settings')
+        .select('*')
+        .single();
+
+      if (error && error.code !== 'PGRST116') {
+        throw error;
+      }
+
+      if (data) {
+        setSettings({
+          logo_url: data.logo_url || '/logo.png',
+          site_name: data.site_name || 'Boreland Fashions',
+          loading: false,
+        });
+      } else {
+        setSettings((prev) => ({ ...prev, loading: false }));
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error);
+      setSettings((prev) => ({ ...prev, loading: false }));
+    }
+  };
+
+  const updateLogo = async (logoUrl) => {
+    try {
+      const { data, error } = await supabase
+        .from('site_settings')
+        .upsert({ id: 1, logo_url: logoUrl }, { onConflict: 'id' })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setSettings((prev) => ({ ...prev, logo_url: data.logo_url }));
+      return { success: true };
+    } catch (error) {
+      console.error('Error updating logo:', error);
+      return { success: false, error: error.message };
+    }
+  };
+
+  const updateSiteName = async (siteName) => {
+    try {
+      const { data, error } = await supabase
+        .from('site_settings')
+        .upsert({ id: 1, site_name: siteName }, { onConflict: 'id' })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setSettings((prev) => ({ ...prev, site_name: data.site_name }));
+      return { success: true };
+    } catch (error) {
+      console.error('Error updating site name:', error);
+      return { success: false, error: error.message };
+    }
+  };
+
+  const uploadLogo = async (file) => {
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `logo-${Date.now()}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('site-assets')
+        .upload(fileName, file, { upsert: true });
+
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from('site-assets')
+        .getPublicUrl(fileName);
+
+      const result = await updateLogo(urlData.publicUrl);
+      return result;
+    } catch (error) {
+      console.error('Error uploading logo:', error);
+      return { success: false, error: error.message };
+    }
+  };
+
+  return (
+    <SettingsContext.Provider
+      value={{
+        settings,
+        updateLogo,
+        updateSiteName,
+        uploadLogo,
+        refreshSettings: fetchSettings,
+      }}
+    >
+      {children}
+    </SettingsContext.Provider>
+  );
+};
+
+====================================================================
+>>> FILE: ./src/api/apiService.js
+====================================================================
+import { supabase } from '../lib/supabase';
+
+// --- Transformers ---
+const transformProduct = (record) => ({
+  ...record,
+  imageUrl: record.image_url,
+  variants: record.variants || { colors: [], sizes: [] },
+  rating: record.rating || { average: 0, count: 0 },
+  reviews: record.reviews || [],
+  specifications: record.specifications || []
+});
+
+const transformPost = (record) => ({
+  ...record,
+  imageUrl: record.image_url,
+  readTime: record.read_time,
+});
+
+const transformOrder = (record) => ({
+  ...record,
+  customerName: record.customer_name,
+});
+
+const transformProfile = (record) => ({
+  ...record,
+  dateJoined: record.date_joined,
+});
+
+const transformCoupon = (record) => ({
+  ...record,
+  discountType: record.discount_type,
+  expirationDate: record.expiration_date,
+  usageLimit: record.usage_limit,
+  usageCount: record.usage_count,
+});
+
+// --- API Service ---
+const apiService = {
+  // --- Products ---
+  getProducts: async () => {
+    const { data, error } = await supabase.from('products').select('*').order('id', { ascending: true });
+    if (error) throw new Error(error.message);
+    return data.map(transformProduct);
+  },
+  
+  createProduct: async (productData) => {
+    const dbPayload = {
+      name: productData.name,
+      description: productData.description,
+      price: productData.price,
+      image_url: productData.imageUrl,
+      category: productData.category,
+      rating: productData.rating,
+      variants: productData.variants,
+      specifications: productData.specifications
+    };
+    const { data, error } = await supabase.from('products').insert([dbPayload]).select().single();
+    if (error) throw new Error(error.message);
+    return transformProduct(data);
+  },
+  
+  updateProduct: async (id, updatedData) => {
+    const dbPayload = {};
+    if (updatedData.name) dbPayload.name = updatedData.name;
+    if (updatedData.description) dbPayload.description = updatedData.description;
+    if (updatedData.price) dbPayload.price = updatedData.price;
+    if (updatedData.imageUrl) dbPayload.image_url = updatedData.imageUrl;
+    if (updatedData.category) dbPayload.category = updatedData.category;
+    
+    const { data, error } = await supabase.from('products').update(dbPayload).eq('id', id).select().single();
+    if (error) throw new Error(error.message);
+    return transformProduct(data);
+  },
+  
+  deleteProduct: async (id) => {
+    const { error } = await supabase.from('products').delete().eq('id', id);
+    if (error) throw new Error(error.message);
+    return { success: true };
+  },
+
+  // --- Blog Posts ---
+  getBlogPosts: async () => {
+    const { data, error } = await supabase.from('blog_posts').select('*').order('id', { ascending: false });
+    if (error) throw new Error(error.message);
+    return data.map(transformPost);
+  },
+  
+  createBlogPost: async (postData) => {
+    const dbPayload = {
+      title: postData.title,
+      category: postData.category,
+      author: postData.author,
+      read_time: postData.readTime,
+      excerpt: postData.excerpt,
+      image_url: postData.imageUrl,
+      date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    };
+    const { data, error } = await supabase.from('blog_posts').insert([dbPayload]).select().single();
+    if (error) throw new Error(error.message);
+    return transformPost(data);
+  },
+
+  updateBlogPost: async (id, updatedData) => {
+    const dbPayload = {};
+    if (updatedData.title) dbPayload.title = updatedData.title;
+    if (updatedData.imageUrl) dbPayload.image_url = updatedData.imageUrl;
+    if (updatedData.readTime) dbPayload.read_time = updatedData.readTime;
+    const { data, error } = await supabase.from('blog_posts').update(dbPayload).eq('id', id).select().single();
+    if (error) throw new Error(error.message);
+    return transformPost(data);
+  },
+  
+  deleteBlogPost: async (id) => {
+    const { error } = await supabase.from('blog_posts').delete().eq('id', id);
+    if (error) throw new Error(error.message);
+    return { success: true };
+  },
+
+  // --- Orders ---
+  getOrders: async () => {
+    const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
+    if (error) throw new Error(error.message);
+    return data.map(transformOrder);
+  },
+  
+  updateOrderStatus: async (id, status) => {
+    const { data, error } = await supabase.from('orders').update({ status }).eq('id', id).select().single();
+    if (error) throw new Error(error.message);
+    return transformOrder(data);
+  },
+
+  // --- Users ---
+  getUsers: async () => {
+    const { data, error } = await supabase.from('profiles').select('*').order('date_joined', { ascending: false });
+    if (error) throw new Error(error.message);
+    return data.map(transformProfile);
+  },
+  
+  createUser: async (userData) => {
+    const { data, error } = await supabase.from('profiles').insert([{ name: userData.name, email: userData.email, role: userData.role }]).select().single();
+    if (error) throw new Error(error.message);
+    return transformProfile(data);
+  },
+  
+  updateUser: async (id, updatedData) => {
+    const { data, error } = await supabase.from('profiles').update(updatedData).eq('id', id).select().single();
+    if (error) throw new Error(error.message);
+    return transformProfile(data);
+  },
+  
+  deleteUser: async (id) => {
+    const { error } = await supabase.from('profiles').delete().eq('id', id);
+    if (error) throw new Error(error.message);
+    return { success: true };
+  },
+
+  // --- Coupons ---
+  getCoupons: async () => {
+    const { data, error } = await supabase.from('coupons').select('*').order('created_at', { ascending: false });
+    if (error) throw new Error(error.message);
+    return data.map(transformCoupon);
+  },
+
+  createCoupon: async (couponData) => {
+    const dbPayload = {
+      code: couponData.code,
+      discount_type: couponData.discountType,
+      value: couponData.value,
+      expiration_date: couponData.expirationDate,
+      usage_limit: couponData.usageLimit,
+    };
+    const { data, error } = await supabase.from('coupons').insert([dbPayload]).select().single();
+    if (error) throw new Error(error.message);
+    return transformCoupon(data);
+  },
+
+  deleteCoupon: async (id) => {
+    const { error } = await supabase.from('coupons').delete().eq('id', id);
+    if (error) throw new Error(error.message);
+    return { success: true };
+  },
+
+  // --- Site Settings ---
+  getSiteSettings: async () => {
+    const { data, error } = await supabase.from('site_settings').select('*').single();
+    if (error && error.code !== 'PGRST116') throw new Error(error.message);
+    return data;
+  },
+
+  updateSiteSettings: async (settingsData) => {
+    const dbPayload = {};
+    if (settingsData.logoUrl) dbPayload.logo_url = settingsData.logoUrl;
+    if (settingsData.siteName) dbPayload.site_name = settingsData.siteName;
+
+    const { data, error } = await supabase
+      .from('site_settings')
+      .upsert({ id: 1, ...dbPayload }, { onConflict: 'id' })
+      .select()
+      .single();
+
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  uploadLogo: async (file) => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `logo-${Date.now()}.${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('site-assets')
+      .upload(fileName, file, { upsert: true });
+
+    if (uploadError) throw new Error(uploadError.message);
+
+    const { data: urlData } = supabase.storage
+      .from('site-assets')
+      .getPublicUrl(fileName);
+
+    return { publicUrl: urlData.publicUrl };
+  },
+};
+
+export default apiService;
+
+====================================================================
+>>> FILE: ./src/lib/supabase.js
+====================================================================
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Missing Supabase environment variables');
+}
+
+export const supabase = createClient(supabaseUrl, supabaseKey);
+
+====================================================================
+>>> FILE: ./tailwind.config.js
+====================================================================
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#EAEAEA', // Off-white for primary actions/text
+        'secondary': '#A9A9A9', // Light grey for accents
+        'background': '#1A1A1A', // Dark charcoal background
+        'surface': '#242424', // Slightly lighter surface for cards
+        'dark-text': '#CCCCCC', // Softer text color for dark bg
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
+      },
+    },
+  },
+  plugins: [],
+}
+
+====================================================================
+>>> FILE: ./postcss.config.js
+====================================================================
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+====================================================================
+>>> FILE: ./.vercel/project.json
+====================================================================
+{"projectId":"prj_6nBa0v0Q5iv9u82r4W5DvV51PGVY","orgId":"team_9WomUdmLYQ6GJ7xOaEPUFojn","projectName":"boreland"}
+====================================================================
+>>> FILE: ./.vercel/README.txt
+====================================================================
+> Why do I have a folder named ".vercel" in my project?
+The ".vercel" folder is created when you link a directory to a Vercel project.
+
+> What does the "project.json" file contain?
+The "project.json" file contains:
+- The ID of the Vercel project that you linked ("projectId")
+- The ID of the user or team your Vercel project is owned by ("orgId")
+
+> Should I commit the ".vercel" folder?
+No, you should not share the ".vercel" folder with anyone.
+Upon creation, it will be automatically added to your ".gitignore" file.
+
+====================================================================
+>>> FILE: ./vite.config.js
+====================================================================
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.js',
+  },
+});
+
+====================================================================
+>>> FILE: ./setupTests.js
+====================================================================
+import '@testing-library/jest-dom';
+
+====================================================================
+>>> FILE: ./.vercelignore
+====================================================================
+node_modules
+dist
+
+====================================================================
+>>> FILE: ./vercel.json
+====================================================================
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
+====================================================================
+>>> FILE: ./.env
+====================================================================
+VITE_SUPABASE_URL=https://iawudxumtuasmofiafqx.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_a8XNMQIJqgs3MQaUw6JdwA_ZJnLxoRn
+
+====================================================================
+>>> FILE: ./public/logo.png
+====================================================================
+# ASSET FILE: ./public/logo.png
+
+====================================================================
+>>> FILE: ./supabase-migrations-create-site-settings.sql
+====================================================================
+-- Site Settings Table
+-- This table stores global site configuration like logo, site name, etc.
+
+CREATE TABLE IF NOT EXISTS site_settings (
+  id INTEGER PRIMARY KEY DEFAULT 1,
+  logo_url TEXT DEFAULT '/logo.png',
+  site_name TEXT DEFAULT 'Boreland Fashions',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Ensure only one row exists
+CREATE UNIQUE INDEX IF NOT EXISTS site_settings_single_row_idx ON site_settings((id = 1));
+
+-- Insert default settings
+INSERT INTO site_settings (id, logo_url, site_name)
+VALUES (1, '/logo.png', 'Boreland Fashions')
+ON CONFLICT (id) DO NOTHING;
+
+-- Storage Bucket for Site Assets
+-- Run this in Supabase Dashboard > Storage or via SQL:
+-- INSERT INTO storage.buckets (id, name, public) VALUES ('site-assets', 'site-assets', true);
+
+-- Storage Policies (add these in Supabase Dashboard)
+-- Allow authenticated users (admins) to upload files
+-- CREATE POLICY "Admins can upload site assets"
+--   ON storage.objects FOR INSERT
+--   TO authenticated
+--   WITH (bucket_id = 'site-assets');
+
+-- Allow public read access
+-- CREATE POLICY "Public can view site assets"
+--   ON storage.objects FOR SELECT
+--   TO public
+--   WITH (bucket_id = 'site-assets');
+
+-- Allow admins to update files
+-- CREATE POLICY "Admins can update site assets"
+--   ON storage.objects FOR UPDATE
+--   TO authenticated
+--   USING (bucket_id = 'site-assets');
+
+-- Allow admins to delete files
+-- CREATE POLICY "Admins can delete site assets"
+--   ON storage.objects FOR DELETE
+--   TO authenticated
+--   USING (bucket_id = 'site-assets');
+
