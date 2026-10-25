@@ -23,12 +23,12 @@ const CategoryItem = ({ title, image, discount }) => (
 
 const CategoryGrid = () => {
   const categories = [
-    { title: "Formal Suits", image: "https://placehold.co/600x800/1a1a1a/eaeaea?text=Suits", discount: "40% OFF" },
-    { title: "Luxury Blazers", image: "https://placehold.co/600x800/2a2a2a/eaeaea?text=Blazers", discount: "30% OFF" },
-    { title: "Premium Shirts", image: "https://placehold.co/600x800/151515/eaeaea?text=Shirts", discount: "50% OFF" },
-    { title: "Trousers", image: "https://placehold.co/600x800/202020/eaeaea?text=Trousers", discount: "25% OFF" },
-    { title: "Leather Shoes", image: "https://placehold.co/600x800/000000/eaeaea?text=Shoes", discount: "20% OFF" },
-    { title: "Accessories", image: "https://placehold.co/600x800/333333/eaeaea?text=Accessories", discount: "15% OFF" },
+    { title: "Formal Suits", image: "/images/category_suits.png", discount: "40% OFF" },
+    { title: "Luxury Blazers", image: "/images/category_blazers.png", discount: "30% OFF" },
+    { title: "Premium Shirts", image: "/images/category_shirts.png", discount: "50% OFF" },
+    { title: "Trousers", image: "/images/category_trousers.png", discount: "25% OFF" },
+    { title: "Leather Shoes", image: "/images/categories/shoes.png", discount: "20% OFF" },
+    { title: "Accessories", image: "/images/categories/accessories.png", discount: "15% OFF" },
   ];
 
   return (

@@ -52,7 +52,7 @@ const ProductDetailPage = () => {
             <StarRating rating={product.rating.average} />
             <span className="text-sm text-secondary">({product.rating.count} reviews)</span>
           </div>
-          <p className="text-3xl font-serif text-secondary mb-6">${product.price.toFixed(2)}</p>
+          <p className="text-3xl font-serif text-secondary mb-6">₹{product.price.toFixed(2)}</p>
           <p className="text-dark-text leading-relaxed mb-8">{product.description}</p>
           
           {product.variants.colors?.length > 0 && (

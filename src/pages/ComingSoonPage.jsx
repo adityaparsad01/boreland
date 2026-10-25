@@ -13,7 +13,7 @@ const ComingSoonPage = () => {
           Boreland Global Fashions
         </h2>
         <p className="text-lg text-secondary italic mb-12">
-          Dress smart. Lead bold.
+          <span className="font-bold text-[#D4AF37]">D</span>ress <span className="font-bold text-[#D4AF37]">S</span>mart. <span className="font-bold text-[#D4AF37]">L</span>ead <span className="font-bold text-[#D4AF37]">B</span>old.
         </p>
 
         <h1 className="text-4xl md:text-6xl font-serif text-primary uppercase tracking-wider mb-4">

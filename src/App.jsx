@@ -20,6 +20,7 @@ import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 import CartPage from './pages/cart/CartPage';
 
 // Auth Pages
@@ -31,6 +32,7 @@ import AdminLoginPage from './pages/admin/AdminLoginPage';
 
 // Account Pages
 import ProfilePage from './pages/account/ProfilePage';
+import OrdersPage from './pages/account/OrdersPage';
 
 // Admin Pages
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
@@ -78,6 +80,7 @@ function App() {
           <Route path="products/:productId" element={<ProductDetailPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="about" element={<AboutPage />} />
 
           {/* Customer Auth */}
           <Route path="login" element={<LoginPage />} />
@@ -93,6 +96,10 @@ function App() {
           <Route
             path="account/update-password"
             element={<ProtectedRoute><UpdatePasswordPage /></ProtectedRoute>}
+          />
+          <Route
+            path="orders"
+            element={<ProtectedRoute><OrdersPage /></ProtectedRoute>}
           />
         </Route>
 

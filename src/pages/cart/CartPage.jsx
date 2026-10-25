@@ -34,7 +34,7 @@ const CartPage = () => {
             <img src={item.imageUrl} alt={item.name} className="w-24 h-24 object-cover" />
             <div className="flex-grow ml-4">
               <h2 className="font-serif font-bold text-lg text-primary">{item.name}</h2>
-              <p className="text-secondary">${item.price.toFixed(2)}</p>
+              <p className="text-secondary">₹{item.price.toFixed(2)}</p>
             </div>
             <div className="flex items-center gap-4">
               <input
@@ -57,7 +57,7 @@ const CartPage = () => {
       <div className="mt-8 flex justify-end items-center">
         <div className="text-right">
           <p className="text-2xl font-bold text-primary">
-            Total: <span className="text-primary">${totalCost.toFixed(2)}</span>
+            Total: <span className="text-primary">₹{totalCost.toFixed(2)}</span>
           </p>
           <p className="text-secondary text-sm">Taxes and shipping calculated at checkout.</p>
           <Button className="mt-4">Proceed to Checkout</Button>

@@ -80,10 +80,10 @@ const ProductCard = ({ product }) => {
 
         <div className="mt-auto flex items-center gap-2">
           <span className="text-sm font-bold text-gray-900">
-            ${product.price.toFixed(2)}
+            ₹{product.price.toFixed(2)}
           </span>
           <span className="text-xs text-gray-400 line-through">
-            ${originalPrice.toFixed(2)}
+            ₹{originalPrice.toFixed(2)}
           </span>
         </div>
       </div>

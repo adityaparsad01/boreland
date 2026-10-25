@@ -41,9 +41,8 @@ const MobileBottomNav = () => {
         {/* 3. Home (Center Circle) */}
         <div className="relative -top-5 w-full flex justify-center pointer-events-none">
           <NavLink to="/" className="pointer-events-auto">
-            <div className="w-14 h-14 bg-[#1A1A1A] rounded-full flex flex-col items-center justify-center shadow-lg border-4 border-white transform transition-transform active:scale-95">
-              {/* Using a Tree/Brand Icon similar to reference but fitting Boreland theme */}
-              <span className="text-white font-serif text-xl font-bold">B</span>
+            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white transform transition-transform active:scale-95 overflow-hidden">
+              <img src="/logo.png" alt="Boreland Logo" className="w-8 h-8 object-contain" />
             </div>
             <span className="text-[10px] font-medium text-black block text-center mt-1">Home</span>
           </NavLink>
