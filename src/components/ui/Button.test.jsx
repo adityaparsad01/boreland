@@ -26,7 +26,7 @@ describe('Button Component', () => {
   test('renders with secondary variant styles when specified', () => {
     render(<Button variant="secondary">Secondary Button</Button>);
     const buttonElement = screen.getByRole('button', { name: /Secondary Button/i });
-    expect(buttonElement).toHaveClass('border-secondary');
+    expect(buttonElement).toHaveClass('bg-secondary');
     expect(buttonElement).not.toHaveClass('bg-primary');
   });
 });
